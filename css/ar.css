@@ -1,0 +1,16 @@
+@import url(http://fonts.googleapis.com/css?family=Faster+One);
+@import url(http://openfontlibrary.org/face/droid-arabic-kufi);
+@import url(http://openfontlibrary.org/face/droid-arabic-naskh);
+body,
+button,
+input,
+select,
+textarea {
+	font-family: 'Droid Arabic Naskh';
+}
+.font-faster-one{
+	font-family: 'Faster One';
+}
+.font-kufi{
+	font-family: 'Droid Arabic Kufi';
+}

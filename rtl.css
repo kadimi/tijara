@@ -1,0 +1,154 @@
+/*
+Theme Name: carid_clone
+
+Adding support for language written in a Right To Left (RTL) direction is easy -
+it's just a matter of overwriting all the horizontal positioning attributes
+of your CSS stylesheet in a separate stylesheet file named rtl.css.
+
+http://codex.wordpress.org/Right_to_Left_Language_Support
+
+*/
+
+body {
+	direction: rtl;
+}
+
+
+/* =Reset
+-------------------------------------------------------------- */
+caption, th, td {
+	text-align: right;
+}
+
+/* Alignment */
+.alignleft {
+	float: right;
+	margin-right: inherit;
+	margin-left: 1.5em;
+}
+.alignright {
+	float: left;
+	margin-left: inherit;
+	margin-right: 1.5em;
+}
+
+/* Text elements */
+ul, ol {
+	margin: 0 3em 1.5em 0;
+}
+li > ul,
+li > ol {
+	margin-left: inherit;
+	margin-right: 1.5em;
+}
+/* Generic classes */
+.one-third,
+.one-fourth{
+	float: right;
+	margin: 0 0 0 2%;
+}
+
+/* Header: #masthead */
+#secondary-menu li{
+	float: right;
+	margin: 0 0.5em 0 0;
+}
+#secondary-menu li:before {
+	content: "·";
+	padding: 0 0 0 .8em;
+}
+
+#s{
+	padding: 3px 3px 3px 24px;
+}
+#searchsubmit{
+	right:inherit;
+	left: 4px;
+}
+#cart{
+	float: left;
+}
+#cart-icon{
+	float: right;
+}
+#cart-contents{
+	float: right;
+}
+
+/* Standard menu */
+#megaMenu.wpmega-nojs li.ss-nav-menu-mega ul.sub-menu.sub-menu-1,
+#megaMenu.megaFullWidthSubs li.ss-nav-menu-mega ul.sub-menu.sub-menu-1,
+#megaMenu li.ss-nav-menu-mega.ss-nav-menu-mega-fullWidth ul.sub-menu.sub-menu-1 {
+  /* right: 0 !important; /* fix 1px introduced by basic before the menu*/ 
+}
+#megaMenu > .megaMenu > li > a{
+	margin: 10px 0 !important;
+	padding: 10px 2.1rem; 
+	color: white;
+	border: solid 1px rgba(255, 255, 255, 0.25) !important;
+	border-width: 0 0 0 1px !important;
+}
+#site-navigation > .menu > li:last-child a, #megaMenu > .megaMenu > li:last-child a{
+	border: none !important;
+}
+
+#megaMenu ul.megaMenu > li.menu-item {
+	float: right;
+	text-align: right;
+}
+#megaMenu ul.megaMenu li.menu-item.ss-nav-menu-mega ul.sub-menu-1 > li.menu-item {
+	float: right;
+	text-align: right;
+}
+/* Slider */
+.nivo-controlNav {
+	text-align: left;
+}
+.nivo-controlNav a {
+	font-size: 4px;
+}
+/* Primary & Content */
+#primary{
+	float: left;
+}
+#content {
+  float: left;
+}
+/* Sidebar */
+#sidebar {
+	float: right;
+}
+#sidebar .widget-title:after {
+	float: left;
+	background-position: center left;
+}
+#sidebar .collapsed .widget-title:after {
+	transform:rotate(-90deg);
+}
+#sidebar ul ul{
+	padding: 0 10px 0 0;
+}
+#sidebar .count{
+	float: left;
+	padding: 1px 0;
+	margin: 0 6px 0 0;
+}
+
+/* WooCommerce */
+.woocommerce .woocommerce-ordering,
+.woocommerce-page .woocommerce-ordering {
+	float: left;
+}
+.woocommerce ul.products li.product,
+.woocommerce-page ul.products li.product {
+	float: right;
+	margin: 0 0 2.992em 3.8%;
+}
+.woocommerce ul.products li.product:last-child,
+.woocommerce-page ul.products li.product:last-child {
+	margin-left: 0;
+}
+#megaMenu ul.megaMenu li.menu-item,
+#megaMenu ul.megaMenu li.widget {
+	text-align: right;
+}
