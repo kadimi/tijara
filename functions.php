@@ -10,12 +10,12 @@
  */
 add_action( 'admin_notices', 'carid_requirements' );
 function carid_requirements() {
-	// WooCommerce
-	if(!is_object($GLOBALS['woocommerce']))
-		echo '<div class="error"><p>' . _e( 'The current theme requires the <strong>WooCommerce</strong> plugin', 'carid_clone' ) . '</p></div>';
 	// Logo
 	if(!get_header_image())
-		echo '<div class="error"><p>' . _e( 'Please configure a header image (logo)', 'carid_clone' ) . '</p></div>';
+		echo '<div class="error"><p>' . __( 'Please configure a header image (logo)', 'carid_clone' ) . '</p></div>';
+	// WooCommerce
+	if(!is_plugin_active('woocommerce'))
+		echo '<div class="error"><p>' . __( 'The current theme requires the <strong>WooCommerce</strong> plugin', 'carid_clone' ) . '</p></div>';
 }
 
 /**
