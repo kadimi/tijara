@@ -14,7 +14,7 @@ function carid_requirements() {
 	if(!get_header_image())
 		echo '<div class="error"><p>' . __( 'Please configure a header image (logo)', 'carid_clone' ) . '</p></div>';
 	// WooCommerce
-	if(!is_plugin_active('woocommerce'))
+	if(!is_object($GLOBALS['woocommerce']))
 		echo '<div class="error"><p>' . __( 'The current theme requires the <strong>WooCommerce</strong> plugin', 'carid_clone' ) . '</p></div>';
 }
 
