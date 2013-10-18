@@ -638,7 +638,7 @@ object {
 	border-radius: 0;
 	margin-top: 20px;
 	padding: 3px 24px 3px 3px;
-	width: 191px;
+	width: 251px;
 }
 #searchsubmit{
 	background-image: url("http://png.findicons.com/files/icons/1389/g5_system/16/toolbar_find.png");
@@ -651,16 +651,25 @@ object {
 }
 #cart{
 	float: right;
+	text-decoration: none;
+}
+#cart:hover{
+	text-decoration: none;
 }
 #cart-icon{
-	background: #555 url("http://findicons.com/files/icons/2580/android_icons/36/shopping_cart.png") center center no-repeat;
-	width: 52px;
-	height: 52px;
-	float: left;
+	background-color: #555;
+	background-image: url("http://findicons.com/files/icons/2580/android_icons/36/shopping_cart.png");
+	background-position: center right;
+	background-repeat: no-repeat;
+	color: white;
+	font-size: 2.0rem;
+	height: 32px;
+	padding: 0 10px;
+	width: 260px;
 }
 #cart-contents{
 	background: #777;
-	width:148px;
+	width:260px;
 	height: 40px;
 	float: left;
 	padding: 6px 10px;

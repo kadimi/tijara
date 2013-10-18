@@ -69,7 +69,7 @@ li > ol {
 	float: left;
 }
 #cart-icon{
-	float: right;
+	background-position: center left;
 }
 #cart-contents{
 	float: right;

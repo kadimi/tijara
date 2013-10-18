@@ -226,12 +226,12 @@ function woocommerce_header_add_to_cart_fragment( $fragments ) {
 	global $woocommerce;
 	ob_start();	
 	?>
-				<a id="cart" rel="nofollow" class="small" href="<?php echo $woocommerce->cart->get_cart_url(); ?>" >
-					<div id="cart-icon"></div>
+				<a id="cart" rel="nofollow" href="<?php echo $woocommerce->cart->get_cart_url(); ?>" >
+					<div id="cart-icon"><?php echo $woocommerce->cart->cart_contents_count > 0 ? __('Cart contains items', 'carid_clone') . ' <span class="tiny">' . __('(click to pay)', 'carid_clone') . '</span>' : __('Cart is empty', 'carid_clone')?></div>
 					<div id="cart-contents">
-						<span class="black"><?php _e('Shopping Cart', 'carid_clone')?>:</span> <span class="white strong"><?php echo $woocommerce->cart->get_cart_total(); ?></span>
+						<span class="black"><?php _e('Shopping cart total', 'carid_clone')?>:</span> <span class="white strong"><?php echo $woocommerce->cart->get_cart_total(); ?></span>
 						<br />
-						<span class="black tiny"><?php _e('Now in your cart', 'carid_clone')?>: <?php echo $woocommerce->cart->cart_contents_count;?> <?php _e('items', 'carid_clone')?></span>
+						<span class="black tiny"><?php  _e('Number of items:', 'carid_clone')?> <span class="white strong"><?php echo $woocommerce->cart->cart_contents_count;?></span></span>
 					</div><!-- #cart-contents -->
 				</a><!-- #cart -->
 	<?php
