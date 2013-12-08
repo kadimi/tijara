@@ -56,9 +56,12 @@ global $woocommerce;
 		<div id="masthead-inner">
 			<div id="logo" class="one-third">
 				<?php $header_image = get_header_image(); ?>
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-					<img src="<?php header_image(); ?>" alt="<?php bloginfo( 'description' ); ?>" />
-				</a>
+				<?php if($header_image) : ?>
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display'))?>" rel="home"><img src="<?php echo $header_image?>" alt="<?php bloginfo( 'description')?>" /></a>
+				<?php else : ?>
+					<h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
+					<h4><?php bloginfo( 'description' ); ?></h4>
+				<?php endif; ?>
 			</div><!-- #logo -->
 			<div class="one-third">
 				<?php dynamic_sidebar( 'header-center' );?>
@@ -79,37 +82,29 @@ global $woocommerce;
 	</nav><!-- #site-navigation -->
 
 	<?php 
+	// Load images if applicable, i.e, for pages, products and product categories
+	if (is_page() OR is_product() OR is_product_category()) {
+		// Taxonomy archive pages are different, we will query term data
+		if (is_product_category()) {
+			$term = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy')); 
+			$term_custom = piklist('get_term_custom', $term->term_id);
+			$slider_images = $term_custom['slider_images'];
+		}
+		// For other pages (page, product, post), we use the post meta
+		else {
+			$slider_images = get_post_meta($post->ID, 'slider_images', false);
+		}
 
-	$_GET_tmp = isset($_GET) ? $_GET : array();
-	if(is_product_category())
-		$_GET_tmp['product_cat'] = TRUE;
-
-	if (0 
-		|| is_page() 
-		|| is_product()
-		|| (is_product_category() && count($_GET_tmp) == 1)
-	){
-		if(is_product_category())
-			$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); 
-
-		$slider_images = array();
-		for($i = 1; $i <= 5; $i++){
-			$get_field = is_product_category() 
-				? get_field('slider_image_'.$i, $term->taxonomy . '_' . $term->term_id)
-				: get_field('slider_image_'.$i);
-			if($get_field)
-				$slider_images[] = $get_field;
+		// OK, let's get actual URL instead of attachment ID
+		if($slider_images){
+			foreach ($slider_images as $key => $value) 
+				$slider_images[$key] = wp_get_attachment_url($value);
 		}
 
 		if($slider_images){
 			?><div id="slider" class="nivoSlider"><?php
-		}
-		$i = 0;
-		while($i < count($slider_images)){
-			echo '<img src="' . $slider_images[$i] . '" alt="" />';
-			$i++;
-		}
-		if($slider_images){
+			foreach ($slider_images as $src)
+				echo '<img src="' . $src . '" alt="" />';
 			?></div><!-- #slider --><?php
 		}
 	} 
