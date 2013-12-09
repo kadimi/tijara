@@ -583,8 +583,8 @@ object {
 	float: left;
 	margin: 0 2% 0 0;
 }
-* .one-third:last-child,
-* .one-fourth:last-child{
+* .one-third:nth-child(3n),
+* .one-fourth:nth-child(4n){
 	margin: 0;
 }
 .one-third{width: 32%}
