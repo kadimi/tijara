@@ -374,35 +374,18 @@ a:active {
 body.admin-bar #site-navigation{
 	top:168px;
 }
-#site-navigation {
+#site-navigation > .menu{
 	background: #333;
 	border-bottom: solid 5px #999;
 	display: block;
+	list-style: none;
+	margin: auto;
 	width: 1000px;
 	height: 4em;
-	margin: auto;
 }
-#site-navigation ul {
-	list-style: none;
-	margin: 0;
-	width: 100%;
-}
-#site-navigation .menu > ul > li {
-	float: left;
-	font-size: .9em;
-	font-weight: bold;
-	position: relative;
-	padding: .4em 0 !important;
-	text-transform: uppercase;
-}
-#site-navigation .menu > ul > li.page_item_has_children{
-	background-image: url("http://findicons.com/files/icons/1689/splashy/16/arrow_state_grey_expanded.png");
-	background-position: bottom center;
-	background-repeat: no-repeat;
-}
-#site-navigation a {
+#site-navigation li a {
 	border-left: solid 1px rgba(100%, 100%, 100%, .1);
-	color: #CCC;
+	color: white;
 	display: block;
 	height: 2em;
 	line-height: 2em;
@@ -412,41 +395,57 @@ body.admin-bar #site-navigation{
 #site-navigation li:first-child a{
 	border-left: none;
 }
-#site-navigation .menu > ul > li > ul {
-	background: white;
-	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+#site-navigation .menu > li{
+	float: left;
+	font-size: .9em;
+	font-weight: bold;
+	padding: .4em 0 !important;
+	text-transform: uppercase;
+}
+#site-navigation .menu > li.current-menu-item a{
+	color: #CCC;
+}
+#site-navigation .menu > li.menu-item-has-children {
+	background: transparent url("http://findicons.com/files/icons/1689/splashy/16/arrow_state_grey_expanded.png") right 1em top 1.5em no-repeat;
+	padding-right: .5em !important; 
+	transition: all 0.5s ease;
+}
+#site-navigation .menu > li.menu-item-has-children:hover {
+	background-position: right 1em top 2em;
+}
+#site-navigation .menu ul{
+	background: #EEE;
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
 	display: none;
 	float: left;
+	list-style: none;
 	position: absolute;
-	z-index: 99999;
+	text-transform: none;
 	width: auto;
+	z-index: 99999;
 }
-#site-navigation .menu > ul > li > ul a{
-	color: black;
+#site-navigation .menu ul a{
+	color: #333;
 }
-#site-navigation .menu > ul > li > ul a:hover{
-	text-decoration: underline;
+#site-navigation .menu ul li.current-menu-item a{
+	color: #666;
 }
-#site-navigation ul ul ul {
-	left: 100%;
-	top: 0;
+#site-navigation .menu ul li.menu-item-has-children{
+	transition: all 0.5s ease;
+	background: transparent url("http://findicons.com/files/icons/1689/splashy/16/arrow_state_grey_expanded.png") 16.5em 1em no-repeat;
+}
+#site-navigation .menu ul li:hover{
+	background-color: white;
+	background-position: 16.5em 1.5em ;
+}
+#site-navigation ul ul ul{
+	left: 5em;
 }
 #site-navigation ul ul a {
-	width: 200px;
-}
-#site-navigation ul ul li {
-}
-#site-navigation li:hover > a {
-}
-#site-navigation ul ul :hover > a {
-}
-#site-navigation ul ul a:hover {
+	width: 15em;
 }
 #site-navigation ul li:hover > ul {
 	display: block;
-}
-#site-navigation li.current_page_item a,
-#site-navigation li.current-menu-item a {
 }
 
 
@@ -767,7 +766,7 @@ body.has-slider #sidebar {
 	cursor: pointer;
 }
 #sidebar .widget-title:after {
-	transition: all 0.6s ease;
+	transition: all 0.5s ease;
 	content: ".";
 	color: transparent;
 	height:16px;
