@@ -4,7 +4,7 @@
  */
 add_action('wp_head', 'nivoSlider');
 function nivoSlider() {
-	if (is_page() OR get_post_type('') == 'product' OR is_product_category()){
+	if (is_page() OR get_post_type('') == 'product' OR kds_is_product_category()){
 		?><script type="text/javascript">
 		/* <![CDATA[ */
 			jQuery(document).ready(function($){

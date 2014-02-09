@@ -11,9 +11,9 @@ require_once TEMPLATEPATH . '/inc/class-tgm-plugin-activation.php';
  * - PikList
  * - Remove Fields
  */
-add_action( 'tgmpa_register', 'carid_clone_register_required_plugins' );
-function carid_clone_register_required_plugins () {
-	$theme_text_domain = 'carid_clone';
+add_action( 'tgmpa_register', 'tijara_register_required_plugins' );
+function tijara_register_required_plugins () {
+	$theme_text_domain = 'tijara';
 	$plugins = array(
 		array(
 			'name' 		=> 'WooCommerce',
@@ -23,11 +23,6 @@ function carid_clone_register_required_plugins () {
 		array(
 			'name' 		=> 'PikList',
 			'slug' 		=> 'piklist',
-			'required' 	=> true,
-		),
-		array(
-			'name' 		=> 'Remove Fields',
-			'slug' 		=> 'remove-fields',
 			'required' 	=> true,
 		),
 	);

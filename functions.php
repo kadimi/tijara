@@ -1,18 +1,18 @@
 <?php
+
 /**
- * carid_clone functions and definitions
+ * tijara functions and definitions
  *
- * @package carid_clone
+ * @package tijara
  */
 
 /**
  * Load templates files in a way that makes them easy to override (by child themes )
  */
-add_action( 'after_setup_theme', 'carid_clone_bootstrap' );
-function carid_clone_bootstrap() {
+add_action( 'after_setup_theme', 'tijara_bootstrap' );
+function tijara_bootstrap() {
 	locate_template(array('includes/dependencies.php'), true, true);
 	locate_template(array('includes/enqueue.php'), true, true);
-	locate_template(array('includes/logo.php'), true, true);
 	locate_template(array('includes/piklist.php'), true, true);
 	locate_template(array('includes/slideshow.php'), true, true);
 	locate_template(array('includes/social.php'), true, true);
@@ -27,7 +27,7 @@ function carid_clone_bootstrap() {
 if ( ! isset( $content_width ) )
 	$content_width = 640; /* pixels */
 
-if ( ! function_exists( 'carid_clone_setup' ) ) :
+if ( ! function_exists( 'tijara_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -35,15 +35,15 @@ if ( ! function_exists( 'carid_clone_setup' ) ) :
  * before the init hook. The init hook is too late for some features, such as indicating
  * support post thumbnails.
  */
-function carid_clone_setup() {
+function tijara_setup() {
 
 	/**
 	 * Make theme available for translation
 	 * Translations can be filed in the /languages/ directory
-	 * If you're building a theme based on carid_clone, use a find and replace
-	 * to change 'carid_clone' to the name of your theme in all the template files
+	 * If you're building a theme based on tijara, use a find and replace
+	 * to change 'tijara' to the name of your theme in all the template files
 	 */
-	load_theme_textdomain( 'carid_clone', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'tijara', get_template_directory() . '/languages' );
 
 	/**
 	 * Add default posts and comments RSS feed links to head
@@ -61,14 +61,14 @@ function carid_clone_setup() {
 	 * This theme uses wp_nav_menu() in one location.
 	 */
 	register_nav_menus( array(
-		'primary' => __( 'Primary Menu', 'carid_clone' ),
+		'primary' => __( 'Primary Menu', 'tijara' ),
 	) );
 
 	/**
 	 * Then, I (Nabil Kadimi) added the secondary menu
 	 */
 	register_nav_menus( array(
-		'secondary_menu' => __( 'Secondary Menu', 'carid_clone' ),
+		'secondary_menu' => __( 'Secondary Menu', 'tijara' ),
 	) );
 
 	/**
@@ -79,13 +79,13 @@ function carid_clone_setup() {
 	/**
 	 * Setup the WordPress core custom background feature.
 	 */
-	add_theme_support( 'custom-background', apply_filters( 'carid_clone_custom_background_args', array(
+	add_theme_support( 'custom-background', apply_filters( 'tijara_custom_background_args', array(
 		'default-color' => 'ffffff',
 		'default-image' => '',
 	) ) );
 }
-endif; // carid_clone_setup
-add_action( 'after_setup_theme', 'carid_clone_setup' );
+endif; // tijara_setup
+add_action( 'after_setup_theme', 'tijara_setup' );
 
 
 /**

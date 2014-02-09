@@ -1,7 +1,7 @@
 <?php
 /*
 Title: TBA
-Setting: carid_clone
+Setting: tijara
 Tab: WooCommerce
 Order: 1
 */

@@ -1,7 +1,7 @@
 <?php
 /*
 Title: Text Fields
-Setting: carid_clone
+Setting: tijara
 Tab: Example
 Order: 0
 */

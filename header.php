@@ -4,7 +4,7 @@
  *
  * Displays all of the <head> section and everything up till <div id="main">
  *
- * @package carid_clone
+ * @package tijara
  */
 
 // Make WooCommerce cart accessible
@@ -29,14 +29,16 @@ global $woocommerce;
 	<header id="masthead" class="site-header" role="banner">
 		<div id="masthead-top">
 			<div id="masthead-top-inner">
+				<?php if(kds_woocommerce_installed()): ?>
 				<a id="cart" rel="nofollow" href="<?php echo $woocommerce->cart->get_cart_url(); ?>" >
-					<div id="cart-icon"><?php echo $woocommerce->cart->cart_contents_count > 0 ? __('Cart contains items', 'carid_clone') . ' <span class="tiny">' . __('(click to pay)', 'carid_clone') . '</span>' : __('Cart is empty', 'carid_clone')?></div>
+					<div id="cart-icon"><?php echo $woocommerce->cart->cart_contents_count > 0 ? __('Cart contains items', 'tijara') . ' <span class="tiny">' . __('(click to pay)', 'tijara') . '</span>' : __('Cart is empty', 'tijara')?></div>
 					<div id="cart-contents">
-						<span class="black"><?php _e('Shopping cart total', 'carid_clone')?>:</span> <span class="white strong"><?php echo $woocommerce->cart->get_cart_total(); ?></span>
+						<span class="black"><?php _e('Shopping cart total', 'tijara')?>:</span> <span class="white strong"><?php echo $woocommerce->cart->get_cart_total(); ?></span>
 						<br />
-						<span class="black tiny"><?php  _e('Number of items:', 'carid_clone')?> <span class="white strong"><?php echo $woocommerce->cart->cart_contents_count;?></span></span>
+						<span class="black tiny"><?php  _e('Number of items:', 'tijara')?> <span class="white strong"><?php echo $woocommerce->cart->cart_contents_count;?></span></span>
 					</div><!-- #cart-contents -->
 				</a><!-- #cart -->
+				<?php endif;?>
 				<?php 
 				$secondary_menu = wp_nav_menu(
 					array(
@@ -68,7 +70,7 @@ global $woocommerce;
 			</div>
 			<div class="one-third last">
 				<form method="get" id="searchform" action="<?php bloginfo('home'); ?>/" class="alignright">
-					<input type="text" size="18" value="<?php echo wp_specialchars($s, 1); ?>" placeholder="<?php _e('Search...', 'carid_clone');?>" name="s" id="s" />
+					<input type="text" size="18" value="<?php echo esc_html($s); ?>" placeholder="<?php _e('Search...', 'tijara');?>" name="s" id="s" />
 				 	<i class="icon-search" id="searchsubmit"></i>
 				</form>
 			</div>
@@ -83,9 +85,9 @@ global $woocommerce;
 
 	<?php 
 	// Load images if applicable, i.e, for pages, products and product categories
-	if (is_page() OR is_product() OR is_product_category()) {
+	if ( is_page() OR kds_is_product() OR kds_is_product_category()	) {
 		// Taxonomy archive pages are different, we will query term data
-		if (is_product_category()) {
+		if (kds_is_product_category()) {
 			$term = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy')); 
 			$term_custom = piklist('get_term_custom', $term->term_id);
 			$slider_images = $term_custom['slider_images'];

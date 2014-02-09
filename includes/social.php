@@ -4,7 +4,7 @@
 add_filter( 'the_content', 'social_icons');
 add_filter( 'woocommerce_short_description', 'social_icons');
 function social_icons( $content ) {
-	# cars.edesigner@mailinator.com / cds897ckjds
+
 	global $post;
 
 	if(in_array($post->post_type, array('post', 'product')))

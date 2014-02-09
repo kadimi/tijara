@@ -4,22 +4,22 @@
  *
  * Eventually, some of the functionality here could be replaced by core features
  *
- * @package carid_clone
+ * @package tijara
  */
 
 /**
  * Get our wp_nav_menu() fallback, wp_page_menu(), to show a home link.
  */
-function carid_clone_page_menu_args( $args ) {
+function tijara_page_menu_args( $args ) {
 	$args['show_home'] = true;
 	return $args;
 }
-add_filter( 'wp_page_menu_args', 'carid_clone_page_menu_args' );
+add_filter( 'wp_page_menu_args', 'tijara_page_menu_args' );
 
 /**
  * Adds custom classes to the array of body classes.
  */
-function carid_clone_body_classes( $classes ) {
+function tijara_body_classes( $classes ) {
 	// Adds a class of group-blog to blogs with more than 1 published author
 	if ( is_multi_author() ) {
 		$classes[] = 'group-blog';
@@ -27,12 +27,12 @@ function carid_clone_body_classes( $classes ) {
 
 	return $classes;
 }
-add_filter( 'body_class', 'carid_clone_body_classes' );
+add_filter( 'body_class', 'tijara_body_classes' );
 
 /**
  * Filter in a link to a content ID attribute for the next/previous image links on image attachment pages
  */
-function carid_clone_enhanced_image_navigation( $url, $id ) {
+function tijara_enhanced_image_navigation( $url, $id ) {
 	if ( ! is_attachment() && ! wp_attachment_is_image( $id ) )
 		return $url;
 
@@ -42,12 +42,12 @@ function carid_clone_enhanced_image_navigation( $url, $id ) {
 
 	return $url;
 }
-add_filter( 'attachment_link', 'carid_clone_enhanced_image_navigation', 10, 2 );
+add_filter( 'attachment_link', 'tijara_enhanced_image_navigation', 10, 2 );
 
 /**
  * Filters wp_title to print a neat <title> tag based on what is being viewed.
  */
-function carid_clone_wp_title( $title, $sep ) {
+function tijara_wp_title( $title, $sep ) {
 	global $page, $paged;
 
 	if ( is_feed() )
@@ -63,8 +63,8 @@ function carid_clone_wp_title( $title, $sep ) {
 
 	// Add a page number if necessary:
 	if ( $paged >= 2 || $page >= 2 )
-		$title .= " $sep " . sprintf( __( 'Page %s', 'carid_clone' ), max( $paged, $page ) );
+		$title .= " $sep " . sprintf( __( 'Page %s', 'tijara' ), max( $paged, $page ) );
 
 	return $title;
 }
-add_filter( 'wp_title', 'carid_clone_wp_title', 10, 2 );
+add_filter( 'wp_title', 'tijara_wp_title', 10, 2 );

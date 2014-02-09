@@ -11,5 +11,5 @@ function categories_postcount_filter ($variable) {
 // A better exerpt
 add_filter('get_the_excerpt', 'trim_excerpt');
 function trim_excerpt($text){
-	return preg_replace('#^(.*) \[&hellip;\]$#', '$1<a href=' . get_permalink() . '>&hellip;' . __('read more', 'carid_clone') . '</a>', $text);
+	return preg_replace('#^(.*) \[&hellip;\]$#', '$1<a href=' . get_permalink() . '>&hellip;' . __('read more', 'tijara') . '</a>', $text);
 }

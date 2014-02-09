@@ -13,36 +13,36 @@
 	<?php } // if ( ! empty( $header_image ) ) ?>
 
  *
- * @package carid_clone
+ * @package tijara
  */
 
 /**
  * Setup the WordPress core custom header feature.
  *
- * @uses carid_clone_header_style()
- * @uses carid_clone_admin_header_style()
- * @uses carid_clone_admin_header_image()
+ * @uses tijara_header_style()
+ * @uses tijara_admin_header_style()
+ * @uses tijara_admin_header_image()
  *
- * @package carid_clone
+ * @package tijara
  */
-function carid_clone_custom_header_setup() {
-	add_theme_support( 'custom-header', apply_filters( 'carid_clone_custom_header_args', array(
+function tijara_custom_header_setup() {
+	add_theme_support( 'custom-header', apply_filters( 'tijara_custom_header_args', array(
 		'default-image'          => '',
 		'default-text-color'     => '000',
-		'wp-head-callback'       => 'carid_clone_header_style',
-		'admin-head-callback'    => 'carid_clone_admin_header_style',
-		'admin-preview-callback' => 'carid_clone_admin_header_image',
+		'wp-head-callback'       => 'tijara_header_style',
+		'admin-head-callback'    => 'tijara_admin_header_style',
+		'admin-preview-callback' => 'tijara_admin_header_image',
 	) ) );
 }
-add_action( 'after_setup_theme', 'carid_clone_custom_header_setup' );
+add_action( 'after_setup_theme', 'tijara_custom_header_setup' );
 
-if ( ! function_exists( 'carid_clone_header_style' ) ) :
+if ( ! function_exists( 'tijara_header_style' ) ) :
 /**
  * Styles the header image and text displayed on the blog
  *
- * @see carid_clone_custom_header_setup().
+ * @see tijara_custom_header_setup().
  */
-function carid_clone_header_style() {
+function tijara_header_style() {
 	$header_text_color = get_header_textcolor();
 
 	// If no custom options for text are set, let's bail
@@ -74,15 +74,15 @@ function carid_clone_header_style() {
 	</style>
 	<?php
 }
-endif; // carid_clone_header_style
+endif; // tijara_header_style
 
-if ( ! function_exists( 'carid_clone_admin_header_style' ) ) :
+if ( ! function_exists( 'tijara_admin_header_style' ) ) :
 /**
  * Styles the header image displayed on the Appearance > Header admin panel.
  *
- * @see carid_clone_custom_header_setup().
+ * @see tijara_custom_header_setup().
  */
-function carid_clone_admin_header_style() {
+function tijara_admin_header_style() {
 ?>
 	<style type="text/css">
 		.appearance_page_custom-header #headimg {
@@ -102,15 +102,15 @@ function carid_clone_admin_header_style() {
 	</style>
 <?php
 }
-endif; // carid_clone_admin_header_style
+endif; // tijara_admin_header_style
 
-if ( ! function_exists( 'carid_clone_admin_header_image' ) ) :
+if ( ! function_exists( 'tijara_admin_header_image' ) ) :
 /**
  * Custom header image markup displayed on the Appearance > Header admin panel.
  *
- * @see carid_clone_custom_header_setup().
+ * @see tijara_custom_header_setup().
  */
-function carid_clone_admin_header_image() {
+function tijara_admin_header_image() {
 	$style        = sprintf( ' style="color:#%s;"', get_header_textcolor() );
 	$header_image = get_header_image();
 ?>
@@ -123,4 +123,4 @@ function carid_clone_admin_header_image() {
 	</div>
 <?php
 }
-endif; // carid_clone_admin_header_image
+endif; // tijara_admin_header_image

@@ -64,10 +64,6 @@ msgstr ""
 msgid "Copyright &copy; %d %s. All rights reserved"
 msgstr ""
 
-#: footer.php:22
-msgid "Design by EDesigner"
-msgstr ""
-
 #: archive.php:31
 #, php-format
 msgid "Author: %s"

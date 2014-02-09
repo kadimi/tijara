@@ -8,7 +8,7 @@
  * E.g., it puts together the home page when no home.php file exists.
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
- * @package carid_clone
+ * @package tijara
  */
 
 get_header(); ?>
@@ -31,7 +31,7 @@ get_header(); ?>
 
 			<?php endwhile; ?>
 
-			<?php carid_clone_content_nav( 'nav-below' ); ?>
+			<?php tijara_content_nav( 'nav-below' ); ?>
 
 		<?php else : ?>
 

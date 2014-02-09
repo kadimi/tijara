@@ -1,5 +1,5 @@
 /*
-Theme Name: carid_clone
+Theme Name: Tijara
 Theme URI: http://underscores.me/
 Author: Nabil Kadimi
 Author URI: http://www.kadimi.com/
@@ -12,7 +12,7 @@ Tags:
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 
- carid_clone is based on Underscores http://underscores.me/, (C) 2012-2013 Automattic, Inc.
+ tijara is based on Underscores http://underscores.me/, (C) 2012-2013 Automattic, Inc.
 
 Resetting and rebuilding styles have been helped along thanks to the fine work of
 Eric Meyer http://meyerweb.com/eric/tools/css/reset/index.html
@@ -371,55 +371,82 @@ a:active {
 
 /* =Menu
 ----------------------------------------------- */
-
-.main-navigation {
-	clear: both;
-	display: block;
-	float: left;
-	width: 100%;
+body.admin-bar #site-navigation{
+	top:168px;
 }
-.main-navigation ul {
+#site-navigation {
+	background: #333;
+	border-bottom: solid 5px #999;
+	display: block;
+	width: 1000px;
+	height: 4em;
+	margin: auto;
+}
+#site-navigation ul {
 	list-style: none;
 	margin: 0;
-	padding-left: 0;
+	width: 100%;
 }
-.main-navigation li {
+#site-navigation .menu > ul > li {
 	float: left;
+	font-size: .9em;
+	font-weight: bold;
 	position: relative;
+	padding: .4em 0 !important;
+	text-transform: uppercase;
 }
-.main-navigation a {
+#site-navigation .menu > ul > li.page_item_has_children{
+	background-image: url("http://findicons.com/files/icons/1689/splashy/16/arrow_state_grey_expanded.png");
+	background-position: bottom center;
+	background-repeat: no-repeat;
+}
+#site-navigation a {
+	border-left: solid 1px rgba(100%, 100%, 100%, .1);
+	color: #CCC;
 	display: block;
+	height: 2em;
+	line-height: 2em;
 	text-decoration: none;
+	padding: .6em 2em;
 }
-.main-navigation ul ul {
-	box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+#site-navigation li:first-child a{
+	border-left: none;
+}
+#site-navigation .menu > ul > li > ul {
+	background: white;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
 	display: none;
 	float: left;
 	position: absolute;
-		top: 1.5em;
-		left: 0;
 	z-index: 99999;
+	width: auto;
 }
-.main-navigation ul ul ul {
+#site-navigation .menu > ul > li > ul a{
+	color: black;
+}
+#site-navigation .menu > ul > li > ul a:hover{
+	text-decoration: underline;
+}
+#site-navigation ul ul ul {
 	left: 100%;
 	top: 0;
 }
-.main-navigation ul ul a {
+#site-navigation ul ul a {
 	width: 200px;
 }
-.main-navigation ul ul li {
+#site-navigation ul ul li {
 }
-.main-navigation li:hover > a {
+#site-navigation li:hover > a {
 }
-.main-navigation ul ul :hover > a {
+#site-navigation ul ul :hover > a {
 }
-.main-navigation ul ul a:hover {
+#site-navigation ul ul a:hover {
 }
-.main-navigation ul li:hover > ul {
+#site-navigation ul li:hover > ul {
 	display: block;
 }
-.main-navigation li.current_page_item a,
-.main-navigation li.current-menu-item a {
+#site-navigation li.current_page_item a,
+#site-navigation li.current-menu-item a {
 }
 
 
@@ -674,82 +701,6 @@ object {
 	float: left;
 	padding: 6px 10px;
 }
-/* Standard menu */
-#megaMenu ul li.ss-nav-menu-reg li.megaReg-with-sub > a:after, 
-#megaMenu ul li.mega-with-sub > a:after, #megaMenu ul li.ss-nav-menu-mega > a:after, 
-#megaMenu ul li.ss-nav-menu-reg li.megaReg-with-sub > span.um-anchoremulator:after, 
-#megaMenu ul li.mega-with-sub > span.um-anchoremulator:after, 
-#megaMenu ul li.ss-nav-menu-mega > span.um-anchoremulator:after{
-	border: none !important; /* Hide pertinent meaningless arrow */
-}
-#megaMenu.wpmega-nojs li.ss-nav-menu-mega ul.sub-menu.sub-menu-1,
-#megaMenu.megaFullWidthSubs li.ss-nav-menu-mega ul.sub-menu.sub-menu-1,
-#megaMenu li.ss-nav-menu-mega.ss-nav-menu-mega-fullWidth ul.sub-menu.sub-menu-1 {
-  left: 0 !important; /* fix 1px introduced by basic before the menu*/ 
-}
-#megaMenu ul.megaMenu li a span.wpmega-item-description,
-#megaMenu ul.megaMenu li span.um-anchoremulator span.wpmega-item-description{
-	font-size: .9rem !important; /* Menu item description font size */
-	color: #666 !important;
-}
-#megaMenu ul.megaMenu > li.ss-nav-menu-mega > ul.sub-menu-1,
-#megaMenu ul.megaMenu li.ss-nav-menu-reg ul.sub-menu {
-	box-shadow: 0 0 1px #777 !important;  /* level 1 submenu stuff */
-	background: white !important;
-	border: none !important;
-}
-#megaMenu.megaMenuHorizontal ul.megaMenu > li.menu-item > ul.sub-menu.sub-menu-1 {
-	border-radius: 0 !important;
-}
-#megaMenu .ss-colgroup .ss-col,
-#megaMenu .wpmega-nonlink li.widget,
-#megaMenu ul.megaMenu li.ss-nav-menu-mega.mega-colgroup > ul > li {
-	padding-top: 5px;
-	padding-bottom: 5px;
-}
-#megaMenu ul.megaMenu li.ss-nav-menu-mega.mega-colgroup ul.sub-menu li.menu-item {
-	height: 60px;
-}
-#megaMenu ul.megaMenu li a span.wpmega-item-description,
-#megaMenu ul.megaMenu li span.um-anchoremulator span.wpmega-item-description {
-  font-size: 1.2rem !important; 
-  text-transform: none !important;
-}
-
-#site-navigation{
-	position: absolute;
-	top:140px;
-	z-index: 999;
-}
-body.admin-bar #site-navigation{
-	top:168px;
-}
-#megaMenu{
-	height: 75px;
-	width: 1000px !important;
-	float: none !important;
-	border-bottom: solid 3px #777 !important;
-}
-
-#megaMenu .sub-menu-1{
-	margin-top: 57px !important;
-}
-#megaMenu > .megaMenu > li > a{
-	margin: 10px 0 !important;
-	padding: 10px 2.1rem; 
-	color: white;
-	border: solid 1px rgba(255, 255, 255, 0.25) !important;
-	border-width: 0 1px 0 0 !important;
-}
-#site-navigation > .menu > li:last-child a, #megaMenu > .megaMenu > li:last-child a{
-	border: none !important;
-}
-
-#megaMenu > .megaMenu > li.mega-with-sub{
-	background-image: url("http://findicons.com/files/icons/1689/splashy/16/arrow_state_grey_expanded.png");
-	background-position: center 85%;
-	background-repeat: no-repeat;
-}
 
 /* Slider */
 #slider{}
@@ -789,16 +740,19 @@ body.has-slider #main{margin-top: 0;}
 }
 #content {
   float: right;
-  width: 784px;
+  width: 744px;
 }
 /* Sidebar */
 #sidebar {
 	background: #303030;
 	border-top: 3px solid #88A836;
 	float: left;
-	width: 200px;
+	width: 240px;
 	z-index: 500;
 	padding-top: 10px;
+}
+#sidebar a{
+	color: white;
 }
 body.has-slider #sidebar {
 	margin-top: -180px;
@@ -882,12 +836,4 @@ body.has-slider #sidebar {
 	margin-right: 1em;
 	margin-left: 1em;
 	color: #777;
-}
-#edesigner{
-	color: transparent;
-	background: transparent url("http://edesigner.com.sa/branding/by_edesigner-132x36.png") center center no-repeat;
-	height: 36px;
-	width: 132px;
-	display: inline-block;
-	vertical-align: middle;
 }

@@ -75,7 +75,7 @@ get_header('shop'); ?>
 				 */
 				$product_cat_subcategories_html = do_shortcode("[product_categories parent='$product_cat_term->term_id']");
 				if( $product_cat_subcategories_html[31] ) {
-					echo '<h2>' . sprintf(__('%s <strong>Subcategories</strong>', 'carid_clone'), $product_cat_term->name) . '</h2>';
+					echo '<h2>' . sprintf(__('%s <strong>Subcategories</strong>', 'tijara'), $product_cat_term->name) . '</h2>';
 					echo $product_cat_subcategories_html;
 				}
 			?>
@@ -86,7 +86,7 @@ get_header('shop'); ?>
 			 */
 			$product_cat_news_html = do_shortcode("[carousel_posts s='$product_cat_term->name' /]");
 			if( $product_cat_news_html[0] ) {
-				echo '<h2>' . sprintf(__('%s <strong>News</strong>', 'carid_clone'), $product_cat_term->name) . '</h2>';
+				echo '<h2>' . sprintf(__('%s <strong>News</strong>', 'tijara'), $product_cat_term->name) . '</h2>';
 				echo $product_cat_news_html;
 			}
 		?>

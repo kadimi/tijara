@@ -3,17 +3,17 @@
  * Jetpack Compatibility File
  * See: http://jetpack.me/
  *
- * @package carid_clone
+ * @package tijara
  */
 
 /**
  * Add theme support for Infinite Scroll.
  * See: http://jetpack.me/support/infinite-scroll/
  */
-function carid_clone_jetpack_setup() {
+function tijara_jetpack_setup() {
 	add_theme_support( 'infinite-scroll', array(
 		'container' => 'content',
 		'footer'    => 'page',
 	) );
 }
-add_action( 'after_setup_theme', 'carid_clone_jetpack_setup' );
+add_action( 'after_setup_theme', 'tijara_jetpack_setup' );

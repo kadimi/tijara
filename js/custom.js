@@ -8,12 +8,12 @@ jQuery(document).ready(function ($){
 		
 		// functions
 		function widget_expand(widget_id){
-			$('#'+widget_id).addClass('expanded').removeClass('collapsed').find('.widget-contents').slideDown('slow');
+			$('#'+widget_id).addClass('expanded').removeClass('collapsed').find('.widget-contents').slideDown('fast');
 			$.cookie(widget_id, 'expanded', { expires : 90 });
 		}
 
 		function widget_collapse(widget_id){
-			$('#'+widget_id).addClass('collapsed').removeClass('expanded').find('.widget-contents').slideUp('slow');
+			$('#'+widget_id).addClass('collapsed').removeClass('expanded').find('.widget-contents').slideUp('fast');
 			$.cookie(widget_id, 'collapsed', { expires : 90 });
 		}
 
@@ -40,7 +40,7 @@ jQuery(document).ready(function ($){
 		$('[id^="star_"]').each(function (index) {
 			$(this).raty({
 				scoreName: 'rating_' + (index + 1),
-				path: caridClone.templateUrl + '/js/img',
+				path: tijara.templateUrl + '/js/img',
 				size : 24,
 				starOff : 'star-off-big.png',
 				starOn : 'star-on-big.png',
