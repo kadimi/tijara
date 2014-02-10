@@ -41,19 +41,9 @@ function check_sidebar_params( $params ) {
 
 	if (
 		$params[0]['after_widget'] == '</div></aside>' 
-		&& $settings_1[2]['title'] !== $settings_1[3]['title']
-		&& isset($settings_2['title']) 
-		&& empty($settings_2['title']) 
-		&& (
-			!(
-				isset($settings_2['number']) 
-				|| isset($settings_2['count']) 
-				|| isset($settings_2['dropdown']) 
-				|| isset($settings_2['hierarchical']) 
-			)
-		)
+		&& isset($settings_1[3]['title']) && empty($settings_1[3]['title'])
 	)
-		$params[0][ 'before_widget' ] .= '<div class="widget-contents">';
+	$params[0][ 'before_widget' ] .= '<div class="widget-contents">';
 
 	return $params;
 }

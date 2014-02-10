@@ -12,7 +12,7 @@ Tags:
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 
- tijara is based on Underscores http://underscores.me/, (C) 2012-2013 Automattic, Inc.
+Tijara is based on Underscores http://underscores.me/, (C) 2012-2013 Automattic, Inc.
 
 Resetting and rebuilding styles have been helped along thanks to the fine work of
 Eric Meyer http://meyerweb.com/eric/tools/css/reset/index.html
@@ -372,19 +372,19 @@ a:active {
 /* =Menu
 ----------------------------------------------- */
 body.admin-bar #site-navigation{
-	top:168px;
+
 }
 #site-navigation > .menu{
 	background: #333;
-	border-bottom: solid 5px #999;
+	border-bottom: solid .5rem #999;
 	display: block;
+	height: 5.6rem;
 	list-style: none;
 	margin: auto;
 	width: 1000px;
-	height: 4em;
 }
 #site-navigation li a {
-	border-left: solid 1px rgba(100%, 100%, 100%, .1);
+	border-left: solid .01rem rgba(100%, 100%, 100%, .1);
 	color: white;
 	display: block;
 	height: 2em;
@@ -407,8 +407,10 @@ body.admin-bar #site-navigation{
 }
 #site-navigation .menu > li.menu-item-has-children {
 	background: transparent url("http://findicons.com/files/icons/1689/splashy/16/arrow_state_grey_expanded.png") right 1em top 1.5em no-repeat;
-	padding-right: .5em !important; 
 	transition: all 0.5s ease;
+}
+#site-navigation .menu > li.menu-item-has-children a{
+	padding-right: 3em !important;
 }
 #site-navigation .menu > li.menu-item-has-children:hover {
 	background-position: right 1em top 2em;
@@ -432,11 +434,11 @@ body.admin-bar #site-navigation{
 }
 #site-navigation .menu ul li.menu-item-has-children{
 	transition: all 0.5s ease;
-	background: transparent url("http://findicons.com/files/icons/1689/splashy/16/arrow_state_grey_expanded.png") 16.5em 1em no-repeat;
+	background: transparent url("http://findicons.com/files/icons/1689/splashy/16/arrow_state_grey_expanded.png") 17.5em 1em no-repeat;
 }
 #site-navigation .menu ul li:hover{
 	background-color: white;
-	background-position: 16.5em 1.5em ;
+	background-position: 17.5em 1.5em ;
 }
 #site-navigation ul ul ul{
 	left: 5em;
@@ -618,10 +620,11 @@ object {
 
 /* Header: #masthead */
 #masthead {
-	color: white;
-	width: 100%;
-	height: 180px;
 	background: black;
+	color: white;
+	height: 200px;
+	margin-bottom: -5.6rem;
+	width: 100%;
 }
 #masthead-inner{
 	width: 1000px;
@@ -729,7 +732,7 @@ object {
 
 #main{
 	width: 1000px;
-	margin: 60px auto auto;
+	margin: 2.8rem auto;
 }
 body.has-slider #main{margin-top: 0;}
 

@@ -76,15 +76,17 @@ global $woocommerce;
 			</div>
 		</div><!-- #masthead-inner -->
 	</header><!-- #masthead -->
-	<nav id="site-navigation" class="main-navigation" role="navigation">
-		<?php wp_nav_menu( array(
+	<?php $primary_menu = wp_nav_menu( array(
 			'theme_location' => 'primary',
 			'container' => FALSE,
-			'fallback_cb' => FALSE
-		)); ?>
-	</nav><!-- #site-navigation -->
-
-	<?php 
+			'fallback_cb' => FALSE,
+			'echo' => FALSE
+		)); 
+		if($primary_menu){ ?>
+			<nav id="site-navigation" class="main-navigation" role="navigation">
+			<?php echo $primary_menu; ?>
+			</nav><!-- #site-navigation -->
+		<?php }
 	// Load images if applicable, i.e, for pages, products and product categories
 	if ( is_page() OR kds_is_product() OR kds_is_product_category()	) {
 		// Taxonomy archive pages are different, we will query term data
