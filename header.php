@@ -28,30 +28,23 @@ global $woocommerce;
 	<header id="masthead" class="site-header" role="banner">
 		<div id="masthead-top">
 			<div id="masthead-top-inner">
-				<?php if(kds_woocommerce_installed()): ?>
-				<a id="cart" rel="nofollow" href="<?php echo $woocommerce->cart->get_cart_url(); ?>" >
-					<div id="cart-icon"><?php echo $woocommerce->cart->cart_contents_count > 0 ? __('Cart contains items', 'tijara') . ' <span class="tiny">' . __('(click to pay)', 'tijara') . '</span>' : __('Cart is empty', 'tijara')?></div>
-					<div id="cart-contents">
-						<span class="black"><?php _e('Shopping cart total', 'tijara')?>:</span> <span class="white strong"><?php echo $woocommerce->cart->get_cart_total(); ?></span>
-						<br />
-						<span class="black tiny"><?php  _e('Number of items:', 'tijara')?> <span class="white strong"><?php echo $woocommerce->cart->cart_contents_count;?></span></span>
-					</div><!-- #cart-contents -->
-				</a><!-- #cart -->
-				<?php endif;?>
 				<?php 
-				$secondary_menu = wp_nav_menu(
-					array(
-						'theme_location' => 'secondary_menu',
-						'echo' => FALSE,
-						'container' => FALSE,
-						'menu_class' => '',
-						'fallback_cb' => '__return_false',
-					)
-				);
-				if (!empty($secondary_menu))
-					echo '<div id="secondary-menu">'.$secondary_menu.'</div>';
+					$secondary_menu = wp_nav_menu(
+						array(
+							'theme_location' => 'secondary_menu',
+							'echo' => FALSE,
+							'container' => FALSE,
+							'menu_class' => '',
+							'fallback_cb' => '__return_false',
+						)
+					);
+					// if (!empty($secondary_menu)) {
+						echo '<div id="secondary-menu" class="span8">x'.$secondary_menu.'</div>';
+					// }
+					if(kds_woocommerce_installed()) {
+						kds_woocommerce_cart_botton(6);
+					} 
 				?>
-
 			</div><!-- #masthead-top-inner -->
 		</div><!-- #masthead-top -->
 		<div id="masthead-inner">

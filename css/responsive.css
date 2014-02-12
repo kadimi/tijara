@@ -17,6 +17,7 @@
 	#footer-inner{
 		width: 100%;
 	}
+	#container,
 	#primary{
 		box-shadow: 0 0 1px red;
 		margin-left: calc(-250px);
@@ -65,6 +66,7 @@
 	#footer-inner{
 		width: 100%;
 	}
+	#container,
 	#primary {
 		width: calc(100% - 250px);
 	}
@@ -73,7 +75,6 @@
 	}
 	#content {
 		width: calc(100% - 5.6rem);
-		background: white;
 		margin-right: 2.8rem;
 		margin-left: 2.8rem;
 	}
@@ -93,10 +94,5 @@
 	}
 	#content {
 		width: calc(1180px - 2.8rem - 250px);
-		background: white;
 	}
-	body{
-		background:#FFC;
-	}
-
 }
