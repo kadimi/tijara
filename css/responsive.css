@@ -1,0 +1,102 @@
+/* Landscape phones and down */
+@media (max-width: 480px) {
+	body{ 
+		font-size: 1.2rem;
+	}	
+	#page{ 
+		min-width: 320px;
+	}	
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+	#masthead-inner,
+	#masthead-top-inner,
+	#site-navigation > .menu,
+	#main,
+	#footer-inner{
+		width: 100%;
+	}
+	#primary{
+		box-shadow: 0 0 1px red;
+		margin-left: calc(-250px);
+		margin-right: 1.4rem;
+		width: calc(100% - 5.6rem);
+	}
+	#masthead{
+		margin-bottom: 0;
+		padding-bottom: 1.4rem;
+	}
+	#main{
+		margin-bottom: 1.4rem;
+		margin-top: 1.4rem;
+	}
+	#content {
+		width: 100%;
+	}
+	#site-navigation, 
+	#cart-contents{
+		display: none;
+	}
+	#sidebar{
+		margin-left: calc(-250px + 2.8rem);
+		position: relative;
+		background-image: url("http://findicons.com/files/icons/1689/splashy/16/arrow_state_grey_expanded.png");
+		background-position: top .7rem right .7rem ;
+		background-repeat: no-repeat;
+		transition: all 0.5s ease;
+	}
+	#sidebar:hover{
+		background-position: top 1.4rem right .7rem ;
+	}
+	#sidebar .widget{
+		transition: all 0.5s ease;
+		visibility: hidden;
+		opacity: 0;
+	}
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+	#masthead-inner,
+	#masthead-top-inner,
+	#site-navigation > .menu,
+	#main,
+	#footer-inner{
+		width: 100%;
+	}
+	#primary {
+		width: calc(100% - 250px);
+	}
+	#sidebar {
+		width: 250px;
+	}
+	#content {
+		width: calc(100% - 5.6rem);
+		background: white;
+		margin-right: 2.8rem;
+		margin-left: 2.8rem;
+	}
+}
+
+/* Large desktop */
+@media (min-width: 1200px) {
+	#masthead-inner,
+	#masthead-top-inner,
+	#site-navigation > .menu,
+	#main,
+	#footer-inner{
+		width: 1180px;
+	}
+	#sidebar {
+		width: 250px;
+	}
+	#content {
+		width: calc(1180px - 2.8rem - 250px);
+		background: white;
+	}
+	body{
+		background:#FFC;
+	}
+
+}

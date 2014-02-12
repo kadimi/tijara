@@ -9,7 +9,16 @@ function tijara_enqueue() {
 		wp_enqueue_style('tijara-nivo-slider-style', '//cdnjs.cloudflare.com/ajax/libs/jquery-nivoslider/3.2/nivo-slider.min.css');
 	}
 
-	wp_enqueue_style( 'tijara-style', get_stylesheet_uri() );
+	// wp_enqueue_style( 'tijara-style', get_stylesheet_uri() );
+
+	// The main stylesheet
+	wp_enqueue_style( 'tijara-main-style', get_template_directory_uri() . '/css/main.css' );
+
+	// The responsive stylesheet
+	if(tijara_option('responsive')) {
+		// echo 1;
+		wp_enqueue_style( 'tijara-responsive-style', get_template_directory_uri() . '/css/responsive.css' );
+	}
 
 	wp_enqueue_style( 'tijara-language-style', get_template_directory_uri() . '/css/' . get_locale() . '.css' );
 

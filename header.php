@@ -10,7 +10,6 @@
 // Make WooCommerce cart accessible
 global $woocommerce;
 
-
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -56,7 +55,7 @@ global $woocommerce;
 			</div><!-- #masthead-top-inner -->
 		</div><!-- #masthead-top -->
 		<div id="masthead-inner">
-			<div id="logo" class="one-third">
+			<div id="logo" class="one-fourth">
 				<?php $header_image = get_header_image(); ?>
 				<?php if($header_image) : ?>
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display'))?>" rel="home"><img src="<?php echo $header_image?>" alt="<?php bloginfo( 'description')?>" /></a>
@@ -65,11 +64,11 @@ global $woocommerce;
 					<h4><?php bloginfo( 'description' ); ?></h4>
 				<?php endif; ?>
 			</div><!-- #logo -->
-			<div class="one-third">
+			<div class="one-half">
 				<?php dynamic_sidebar( 'header-center' );?>
 			</div>
-			<div class="one-third last">
-				<form method="get" id="searchform" action="<?php bloginfo('home'); ?>/" class="alignright">
+			<div class="one-fourth last">
+				<form method="get" id="searchform" action="<?php bloginfo('home'); ?>/" >
 					<input type="text" size="18" value="<?php echo esc_html($s); ?>" placeholder="<?php _e('Search...', 'tijara');?>" name="s" id="s" />
 				 	<i class="icon-search" id="searchsubmit"></i>
 				</form>

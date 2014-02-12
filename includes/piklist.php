@@ -18,3 +18,11 @@ function tijara_settings_pages($pages){
 	);
 	return $pages;
 }
+
+// Define a getter for options
+function tijara_option($option) {
+	$theme_options = get_option('tijara');
+	if(isset($theme_options[$option])){
+		return $theme_options[$option];
+	}
+}
