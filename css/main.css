@@ -609,11 +609,18 @@ object {
 .one-third{width: 32%}
 .one-fourth{width: 23.5%}
 
+.span1{width: 6.5%}
+.span2{width: 15%}
 .span3{width: 23.5%}
 .span4{width: 32%}
+.span5{width: 40.5%}
 .span6{width: 49%}
+.span7{width: 57.5%}
 .span8{width: 66%}
 .span9{width: 74.5%}
+.span10{width: 83%}
+.span11{width: 91.5%}
+.span12{width: 100%}
 
 /* Header: #masthead */
 #masthead {

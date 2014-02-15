@@ -48,10 +48,10 @@ global $woocommerce;
 			</div><!-- #masthead-top-inner -->
 		</div><!-- #masthead-top -->
 		<div id="masthead-inner">
-			<div id="logo" class="one-fourth">
+			<div id="logo" class="span2">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display'))?>" rel="home"><img src="<?php echo tijara_get_logo_URL(); ?>" alt="<?php bloginfo( 'description')?>" /></a>
 			</div><!-- #logo -->
-			<div class="one-half">
+			<div class="span7">
 				<?php dynamic_sidebar( 'header-center' );?>
 			</div>
 			<div class="one-fourth last">
