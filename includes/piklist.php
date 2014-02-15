@@ -26,3 +26,17 @@ function tijara_option($option) {
 		return $theme_options[$option];
 	}
 }
+
+// Logo URL getter
+function tijara_get_logo_URL ($default = 'logo.png') {
+	$logo = tijara_option('logo');
+	if ( !empty( $logo[0] ) ) {
+		$logo_URI = wp_get_attachment_url( $logo[0] );	
+	}
+	if ($logo_URI){
+		return $logo_URI;
+	} else {
+		return get_template_directory_uri() . '/' . $default;
+	}
+	
+}

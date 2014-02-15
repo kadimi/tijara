@@ -4,6 +4,14 @@ Title: Layout
 Setting: tijara
 */
 
+// Logo
+piklist('field', array(
+	'type' => 'file'
+	,'field' => 'logo'
+	,'label' => 'Logo'
+	,'description' => 'Your logo will appear in the header'
+));
+
 // Responsive, yes or no
 piklist('field', array(
 	'type' => 'select'

@@ -49,13 +49,7 @@ global $woocommerce;
 		</div><!-- #masthead-top -->
 		<div id="masthead-inner">
 			<div id="logo" class="one-fourth">
-				<?php $header_image = get_header_image(); ?>
-				<?php if($header_image) : ?>
-					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display'))?>" rel="home"><img src="<?php echo $header_image?>" alt="<?php bloginfo( 'description')?>" /></a>
-				<?php else : ?>
-					<h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
-					<h4><?php bloginfo( 'description' ); ?></h4>
-				<?php endif; ?>
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display'))?>" rel="home"><img src="<?php echo tijara_get_logo_URL(); ?>" alt="<?php bloginfo( 'description')?>" /></a>
 			</div><!-- #logo -->
 			<div class="one-half">
 				<?php dynamic_sidebar( 'header-center' );?>
