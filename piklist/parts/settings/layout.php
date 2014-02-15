@@ -8,11 +8,11 @@ Setting: tijara
 piklist('field', array(
 	'type' => 'select'
 	,'field' => 'responsive'
-	,'label' => __('Enable responsive layout')
+	,'label' => __('Enable responsive layout', 'tijara')
 	// ,'description' => __('')
 	,'choices' => array(
-		'1' => 'Yes'
-		,'0' => 'No'
+		'1' => __('Yes', 'tijara')
+		,'O' => __('No', 'tijara')
 	)
 	,'value' => '1'
 ));

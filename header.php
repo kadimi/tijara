@@ -61,7 +61,7 @@ global $woocommerce;
 				<?php dynamic_sidebar( 'header-center' );?>
 			</div>
 			<div class="one-fourth last">
-				<form method="get" id="searchform" action="<?php bloginfo('home'); ?>/" >
+				<form method="get" id="searchform" action="<?php echo home_url(); ?>/" >
 					<input type="text" size="18" value="<?php echo esc_html($s); ?>" placeholder="<?php _e('Search...', 'tijara');?>" name="s" id="s" />
 				 	<i class="icon-search" id="searchsubmit"></i>
 				</form>

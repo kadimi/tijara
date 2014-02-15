@@ -1,12 +1,12 @@
 <?php
 /*
-Title: Owned Cars
+Title: Cars
 */
 piklist('field', array(
 	'type' => 'post-relate'
 	,'scope' => 'product'
-	,'label' => __('What card do you have?')
-	,'field' => __('cars')
+	,'label' => __('What card do you have?', 'tijara')
+	,'field' => 'cars'
 ));
 
 

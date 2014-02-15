@@ -31,6 +31,6 @@ function tijara_enqueue() {
 	}
 
 	wp_enqueue_script( 'tijara-custom', get_template_directory_uri() . '/js/custom.js', array( 'jquery' ));
-	wp_localize_script( 'tijara-custom', 'tijara', array('templateUrl' => get_bloginfo("template_url")) );
+	wp_localize_script( 'tijara-custom', 'tijara', array('templateUrl' => get_template_directory_uri()) );
 
 }

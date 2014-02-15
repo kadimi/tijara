@@ -6,16 +6,27 @@
 	#page{ 
 		min-width: 320px;
 	}	
+	.one-half,
+	.one-third,
+	.one-fourth{
+		width:100%;
+		margin-right: 0;
+	}
+
 }
 
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
-	#masthead-inner,
-	#masthead-top-inner,
 	#site-navigation > .menu,
 	#main,
 	#footer-inner{
 		width: 100%;
+	}
+	#masthead-inner,
+	#masthead-top-inner{
+		margin-left: auto;
+		margin-right: auto;
+		width: calc(100% - 2.8rem);
 	}
 	#container,
 	#primary{
@@ -59,12 +70,16 @@
 
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) {
-	#masthead-inner,
-	#masthead-top-inner,
 	#site-navigation > .menu,
 	#main,
 	#footer-inner{
 		width: 100%;
+	}
+	#masthead-inner,
+	#masthead-top-inner{
+		margin-left: auto;
+		margin-right: auto;
+		width: calc(100% - 2.8rem);
 	}
 	#container,
 	#primary {

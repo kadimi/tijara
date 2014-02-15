@@ -9,8 +9,8 @@ Order: 0
 piklist('field', array(
   'type' => 'text'
   ,'field' => 'example'
-  ,'label' => __('Example')
-  ,'description' => __('ipsum dolor sit amet, consectetur adipiscing elit.')
+  ,'label' => __('Example' 'tijara')
+  ,'description' => __('ipsum dolor sit amet, consectetur adipiscing elit.', 'tijara')
   ,'attributes' => array(
     'class' => 'small-text'
   )

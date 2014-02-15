@@ -625,7 +625,7 @@ object {
 }
 #masthead-inner{
 	width: 960px;
-	margin: 1em auto;
+	margin: 1.4rem auto;
 }
 #masthead-top{
 	height: 28px;
@@ -656,6 +656,7 @@ object {
 	color: white;
 }
 #logo{
+	margin-bottom: 1.4rem;
 }
 #searchform{
 	position: relative;

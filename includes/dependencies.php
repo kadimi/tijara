@@ -3,7 +3,7 @@
 /**
  * Require the TGM_Plugin_Activation class
  */
-require_once TEMPLATEPATH . '/inc/class-tgm-plugin-activation.php';
+require_once get_template_directory() . '/inc/class-tgm-plugin-activation.php';
 
 /**
  * We require those plugins: 
