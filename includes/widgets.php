@@ -47,3 +47,83 @@ function check_sidebar_params( $params ) {
 
 	return $params;
 }
+
+/**
+ * Add Widget options
+ */
+//Add input fields(priority 5, 3 parameters)
+add_action('in_widget_form', 'tijara_in_widget_form',5,3);
+//Callback function for options update (priorität 5, 3 parameters)
+add_filter('widget_update_callback', 'tijara_in_widget_form_update',5,3);
+//add class names (default priority, one parameter)
+add_filter('dynamic_sidebar_params', 'tijara_dynamic_sidebar_params');
+
+function tijara_in_widget_form($t, $return, $instance){
+
+	$instance = wp_parse_args( (array) $instance, array( 
+		'title' => '', 
+		'text' => '', 
+		'alignment' => 'none') 
+	);
+
+	if ( !isset($instance['alignment']) ){
+		$instance['alignment'] = null;
+	}
+
+	if ( !isset($instance['classes']) ) {
+		$instance['classes'] = null;
+	} ?>
+
+	<fieldset class="tijara_admin_fieldset">
+		<legend><a href="#" class="tijara_admin_fieldset_trigger" >Additional options</a></legend>
+		<div class="tijara_admin_fieldset_content">
+			<p>
+				<input id = "<?php echo $t->get_field_id('hide_in_home'); ?>" name = "<?php echo $t->get_field_name('hide_in_home'); ?>" type = "checkbox" <?php checked(isset($instance['hide_in_home']) ? $instance['hide_in_home'] : 0); ?>/>				
+				<label for="<?php echo $t->get_field_id('hide_in_home'); ?>"><?php _e('Hide in homepage', 'tijara'); ?></label>
+			</p>
+
+			<p>
+				<label for="<?php echo $t->get_field_id('alignment'); ?>"><?php _e('Alignment', 'tijara'); ?></label>:
+				<select id="<?php echo $t->get_field_id('alignment'); ?>" name="<?php echo $t->get_field_name('alignment'); ?>">
+					<option <?php selected($instance['alignment'], 'default');?> value="default"><?php _e('Default', 'tijara'); ?></option>
+					<option <?php selected($instance['alignment'], 'center');?> value="center"><?php _e('Center', 'tijara'); ?></option>
+					<option <?php selected($instance['alignment'], 'left');?> value="left"><?php _e('Left', 'tijara'); ?></option>
+					<option <?php selected($instance['alignment'], 'right');?> value="right"><?php _e('Right', 'tijara'); ?></option>
+				</select>
+			</p>
+
+			<p>
+				<label for="<?php echo $t->get_field_id('classes'); ?>"><?php _e('Classes', 'tijara'); ?></label>:
+				<br />
+				<input type="text" name="<?php echo $t->get_field_name('classes'); ?>" id="<?php echo $t->get_field_id('classes'); ?>" value="<?php echo $instance['classes'];?>" />
+			</p>
+		</div>
+	</fieldset>
+	
+	<?php
+	$retrun = null;
+	return array($t, $return, $instance);
+}
+
+function tijara_in_widget_form_update($instance, $new_instance, $old_instance){
+	$instance['hide_in_home'] = isset($new_instance['hide_in_home']);
+	$instance['alignment'] = $new_instance['alignment'];
+	$instance['classes'] = strip_tags($new_instance['classes']);
+	return $instance;
+}
+
+function tijara_dynamic_sidebar_params($params){
+	global $wp_registered_widgets;
+	$widget_id = $params[0]['widget_id'];
+	$widget_obj = $wp_registered_widgets[$widget_id];
+	$widget_opt = get_option($widget_obj['callback'][0]->option_name);
+	$widget_num = $widget_obj['params'][0]['number'];
+	if (isset($widget_opt[$widget_num]['hide_in_home'])){
+			if(isset($widget_opt[$widget_num]['alignment']))
+					$alignment = $widget_opt[$widget_num]['alignment'];
+			else
+				$alignment = '';
+			$params[0]['before_widget'] = preg_replace('/class="/', 'class="'.$alignment.' half ',  $params[0]['before_widget'], 1);
+	}
+	return $params;
+}

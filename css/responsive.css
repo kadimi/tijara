@@ -1,3 +1,7 @@
+.tinynav {
+	display: none 
+}
+
 /* Landscape phones and down */
 @media (max-width: 480px) {
 	body{ 
@@ -43,10 +47,37 @@
 	#content {
 		width: 100%;
 	}
-	#site-navigation, 
-	#cart-contents{
-		display: none;
+	#site-navigation .menu
+{
+		display: none;	
 	}
+	#site-navigation{
+		background: #111;
+		height: 3.5rem;
+		padding: 1.4rem;
+		text-align: center;
+	}
+	#s,
+	.tinynav { 
+		background: #CCC;
+		border-radius: .7rem;
+		border: solid 1px #111;
+		display: inline;
+		font-size: 2.1rem;
+		padding-bottom: .7rem;
+		padding-top: .7rem;
+		width: 49%;
+	}
+	.tinynav:before,
+	.tinynav:after{ 
+		font-family: 'FontAwesome';
+		color:red;
+		position: absolute;
+		top: 0px;
+		left: -5px;
+		content: "\f007";
+	}
+
 	#sidebar{
 		margin-left: calc(-250px + 2.8rem);
 		position: relative;
@@ -66,9 +97,25 @@
 	.one-half,
 	.one-third,
 	.one-fourth,
-	.span7{
+	.span1, .span2, .span3,
+	.span4, .span5, .span6,
+	.span7, .span8, .span9,
+	.span10, .span11, .span12{
 		width:100%;
 		margin-right: 0;
+	}
+	[id^="mobile-"]{
+		display: inline;
+		margin-left: 1.4rem;
+	}
+	[id^="mobile-"] label{
+		cursor: pointer;
+	}
+	#mobile-search form{
+		display: inline;
+	}
+ 	#s{
+ 		display: none;
 	}
 }
 
@@ -113,5 +160,18 @@
 	}
 	#content {
 		width: calc(1180px - 2.8rem - 250px);
+	}
+}
+
+/* Mobile only stuff */
+@media (min-width: 768px) {
+	.mobile-only{
+		display: none;
+	}
+}
+/* Desktop only stuff */
+@media (max-width: 767px) {
+	.desktop-only{
+		display: none;
 	}
 }

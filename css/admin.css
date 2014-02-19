@@ -1,0 +1,15 @@
+.tijara_admin_fieldset {
+	border: 1px solid white;
+	border-top: 1px solid rgb(229, 229, 229);
+	margin: 1em 0;
+	padding: 0 1em;
+}
+.tijara_admin_fieldset.expanded {
+	border-color: rgb(229, 229, 229);
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.04);
+	margin: 1em 0;
+	padding-bottom: .5em;
+}
+.tijara_admin_fieldset_content {
+	display: none;
+}

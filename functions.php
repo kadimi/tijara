@@ -13,6 +13,7 @@ add_action( 'after_setup_theme', 'tijara_bootstrap' );
 function tijara_bootstrap() {
 	locate_template(array('includes/dependencies.php'), true, true);
 	locate_template(array('includes/enqueue.php'), true, true);
+	locate_template(array('includes/menus.php'), true, true);
 	locate_template(array('includes/piklist.php'), true, true);
 	locate_template(array('includes/slideshow.php'), true, true);
 	locate_template(array('includes/social.php'), true, true);

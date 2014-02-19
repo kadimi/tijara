@@ -156,14 +156,16 @@ function woocommerce_header_add_to_cart_fragment( $fragments ) {
 	return $fragments;
 }
 
+// The shopping cart box code generator
 function kds_woocommerce_cart_botton() {
 	global $woocommerce; 
+	$cart_contents_count = $woocommerce->cart->cart_contents_count;
 	$spans = (int) $spans; 
 	?>
-				<a class="<?php echo $woocommerce->cart->cart_contents_count ? 'has-items ' :'' ?>span4 last" id="cart" rel="nofollow" href="<?php echo $woocommerce->cart->get_cart_url(); ?>" >
-					<div class="one-full" id="cart-icon"><?php echo $woocommerce->cart->cart_contents_count > 0 ? __('Cart has items', 'tijara') . ' <span class="tiny">(' . __('checkout', 'tijara') . ')</span>' : __('Cart is empty', 'tijara')?></div>
+				<a class="<?php echo $cart_contents_count ? 'has-items ' :'' ?>span4 last desktop-only" id="cart" rel="nofollow" href="<?php echo $woocommerce->cart->get_cart_url(); ?>" >
+					<div class="one-full" id="cart-icon"><?php echo $cart_contents_count ? __('Your cart has items', 'tijara') : __('Your cart is empty', 'tijara')?> <i class="alignright double fa fa-shopping-cart"></i></div>
 					<div class="one-full" id="cart-contents">
-						<span class="black"><?php _e('Shopping cart total', 'tijara')?>:</span> <span class="white strong"><?php echo $woocommerce->cart->get_cart_total(); ?></span> <span class="black tiny">/ <?php  _e('Number of items:', 'tijara')?> <span class="white strong"><?php echo $woocommerce->cart->cart_contents_count;?></span></span>
+						<span class="black"><?php _e('Shopping cart total', 'tijara')?>:</span> <span class="white strong"><?php echo $woocommerce->cart->get_cart_total(); ?></span> <span class="black small">/ <?php  _e('Number of items:', 'tijara')?> <span class="white strong"><?php echo $cart_contents_count; ?></span></span>
 					</div><!-- #cart-contents -->
 				</a><!-- #cart -->
 	<?php

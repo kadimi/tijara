@@ -31,15 +31,16 @@ global $woocommerce;
 				<?php 
 					$secondary_menu = wp_nav_menu(
 						array(
-							'theme_location' => 'secondary_menu',
-							'echo' => FALSE,
 							'container' => FALSE,
-							'menu_class' => '',
+							'depth' => 1,
+							'echo' => FALSE,
 							'fallback_cb' => '__return_false',
+							'menu_class' => '',
+							'theme_location' => 'secondary_menu',
 						)
 					);
 					// if (!empty($secondary_menu)) {
-						echo '<div id="secondary-menu" class="span8">x'.$secondary_menu.'</div>';
+						echo '<div id="secondary-menu" class="span8">'.$secondary_menu.'</div>';
 					// }
 					if(kds_woocommerce_installed()) {
 						kds_woocommerce_cart_botton(6);
@@ -48,29 +49,37 @@ global $woocommerce;
 			</div><!-- #masthead-top-inner -->
 		</div><!-- #masthead-top -->
 		<div id="masthead-inner">
-			<div id="logo" class="span2">
+			<div id="logo" class="span3">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display'))?>" rel="home"><img src="<?php echo tijara_get_logo_URL(); ?>" alt="<?php bloginfo( 'description')?>" /></a>
 			</div><!-- #logo -->
-			<div class="span7">
+			<div class="span9 alignright last">
 				<?php dynamic_sidebar( 'header-center' );?>
-			</div>
-			<div class="one-fourth last">
-				<form method="get" id="searchform" action="<?php echo home_url(); ?>/" >
-					<input type="text" size="18" value="<?php echo esc_html($s); ?>" placeholder="<?php _e('Search...', 'tijara');?>" name="s" id="s" />
-				 	<i class="icon-search" id="searchsubmit"></i>
-				</form>
 			</div>
 		</div><!-- #masthead-inner -->
 	</header><!-- #masthead -->
 	<?php $primary_menu = wp_nav_menu( array(
-			'theme_location' => 'primary',
 			'container' => FALSE,
+			'container_class' => 'desktop-only',
+			'echo' => FALSE,
 			'fallback_cb' => FALSE,
-			'echo' => FALSE
+			'theme_location' => 'primary',
+			'walker' => new Tijara_Walker_Menu(),
 		)); 
 		if($primary_menu){ ?>
 			<nav id="site-navigation" class="main-navigation" role="navigation">
-			<?php echo $primary_menu; ?>
+				<div id="mobile-navigation">
+					<label for="tinynav1" class="white"><i class="fa fa-align-justify double"></i></label>
+				</div>
+				<?php echo $primary_menu; ?>
+				<div id="mobile-search">
+					<form role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+						<input type="search" id="s" placeholder="<?php echo esc_attr_x( 'Search &hellip;', 'placeholder', 'tijara' ); ?>" value="<?php echo esc_attr( get_search_query() ); ?>" name="s" title="<?php _ex( 'Search for:', 'label', 'tijara' ); ?>" />
+					</form>
+					<label for="s" class="gray"><i class="fa fa-search double"></i></label>
+				</div>
+				<div id="mobile-cart">
+					<a href="#"><i class="fa fa-shopping-cart double"></i></a>	
+				</div>
 			</nav><!-- #site-navigation -->
 		<?php }
 	// Load images if applicable, i.e, for pages, products and product categories

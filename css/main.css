@@ -311,12 +311,10 @@ a:active {
 .alignleft {
 	display: inline;
 	float: left;
-	margin-right: 1.5em;
 }
 .alignright {
 	display: inline;
 	float: right;
-	margin-left: 1.5em;
 }
 .aligncenter {
 	clear: both;
@@ -347,9 +345,12 @@ a:active {
 body.admin-bar #site-navigation{
 
 }
-#site-navigation > .menu{
+#site-navigation {
 	background: #333;
-	border-bottom: solid .5rem #88A836;;
+	border-bottom: solid .5rem #88A836;
+	height: 5.6rem;
+}
+#site-navigation > .menu {
 	display: block;
 	height: 5.6rem;
 	list-style: none;
@@ -571,14 +572,28 @@ object {
 }
 
 /* Generic classes */
-.white{color: white}
-.black{color: black}
-.gray{color: gray}
+.block{
+	display: block;
+}
+.inline{
+	display: inline;
+}
+.white{
+	color: white;
+	transition: all 0.5s ease;
+}
+.black{
+	color: black;
+}
+.gray{
+	color: gray;
+	transition: all 0.5s ease;
+}
 .strong, .bold{font-weight: bold}
 .italic, .em{font-style: italic}
-.huge{font-size: 3rem}
-.small{font-size: 1.2rem}
-.tiny{font-size: 1.1rem}
+.double{font-size: 2.8rem}
+.big{font-size: 2.1rem}
+.small{font-size: 1.05rem}
 
 .one-full,
 .one-half,
@@ -622,7 +637,14 @@ object {
 .span11{width: 91.5%}
 .span12{width: 100%}
 
+.screen-reader-text{
+	display: none;
+}
+
 /* Header: #masthead */
+[id^="mobile-"]{
+	display: none;
+}
 #masthead {
 	background: black;
 	color: white;
@@ -647,41 +669,31 @@ object {
 	line-height: 2.8rem;
 }
 #secondary-menu li{
-	list-style: none;
-	font-size: 1.1rem;
 	float: left;
+	list-style: none;
 	margin: 0 0 0 .5em;
+}
+#secondary-menu li a{
+	color: #999;	
+	transition: all 0.5s ease;
+}
+#secondary-menu li a:hover{
+	color: #CCC;
 }
 #secondary-menu li:first-child:before {
 	content: none;
 }
 #secondary-menu li:before {
-	content: "·";
-	padding: 0 .9em 0 .5em;
+	color: #999;
+	content: "|";
+	padding: 0 1.15rem 0 .7rem;
+	font-size: 1.05rem;
 }
 #secondary-menu a{
 	color: white;
 }
 #logo{
 	margin-bottom: 1.4rem;
-}
-#searchform{
-	position: relative;
-}
-#s{
-	border-radius: 0;
-	margin-top: 20px;
-	padding: 3px 24px 3px 3px;
-	width: 251px;
-}
-#searchsubmit{
-	background-image: url("http://png.findicons.com/files/icons/1389/g5_system/16/toolbar_find.png");
-	width: 16px;
-	height: 16px;
-	position: absolute;
-	top:24px;
-	right:4px;
-	display: block;
 }
 #cart{
 	border-bottom: .3rem solid #88A836;
@@ -690,14 +702,11 @@ object {
 	transition: all .5s ease;
 	z-index: 9999;
 }
-#cart:hover{
+#cart.has-items:hover{
 	margin-bottom: -8.4rem;
 }
 #cart-icon{
 	background-color: #444;
-	background-image: url("http://findicons.com/files/icons/2580/android_icons/36/shopping_cart.png");
-	background-position: top 50% right 1.4rem;
-	background-repeat: no-repeat;
 	color: #999;
 	font-size: 1.6rem;
 	height: 2.8rem;
@@ -716,7 +725,7 @@ object {
 	width: calc(100% - 2.8rem);
 	z-index: 9998;
 }
-#cart:hover #cart-contents {
+#cart.has-items:hover #cart-contents {
 	margin-bottom: 0;
 }
 #cart.has-items #cart-icon{
