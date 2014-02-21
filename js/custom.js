@@ -23,20 +23,38 @@ jQuery(document).ready(function ($) {
         }
     });
 
+    // Remove unwanted generated spans
+    $('span.generated', 'header').remove();
+    $('.nocollapse .generated', '#sidebar').remove();
+
     // Toggle visibility of sidebar contents when titles are clicked 
-    $("#sidebar .widget-title").each(function () {
+    $("#sidebar :not(.nocollapse) .widget-title").each(function () {
     
         // vars
         var widget_id = $(this).closest('aside').attr('id');
         
         // functions
         function widget_expand(widget_id) {
-            $('#'+widget_id).addClass('expanded').removeClass('collapsed').find('.widget-contents').slideDown('fast');
+            $('#'+widget_id)
+                .addClass('expanded')
+                .removeClass('collapsed')
+                .find('.widget-contents')
+                .slideDown('fast')
+            ;
             $.cookie(widget_id, 'expanded', { expires : 90 });
         }
 
         function widget_collapse(widget_id) {
-            $('#'+widget_id).addClass('collapsed').removeClass('expanded').find('.widget-contents').slideUp('fast');
+            $('#'+widget_id)
+                .find('.widget-contents')
+                .slideUp('fast', function () {
+                    $(this)
+                        .parent()
+                        .addClass('collapsed')
+                        .removeClass('expanded')
+                    ;
+                })
+            ;
             $.cookie(widget_id, 'collapsed', { expires : 90 });
         }
 

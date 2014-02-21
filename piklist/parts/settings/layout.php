@@ -24,3 +24,17 @@ piklist('field', array(
 	)
 	,'value' => '1'
 ));
+
+// Responsive, yes or no
+piklist('field', array(
+	'type' => 'select'
+	,'field' => 'sidebar_position'
+	,'label' => __('Sidebar position', 'tijara')
+	// ,'description' => __('')
+	,'choices' => array(
+		'before' => __('Before main content', 'tijara')
+		,'after' => __('After main content', 'tijara')
+	)
+	,'value' => 'before'
+));
+

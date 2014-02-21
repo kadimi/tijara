@@ -51,5 +51,8 @@ add_action( 'admin_init', 'tijara_enqueue_admin' );
 function tijara_enqueue_admin () {
 	wp_enqueue_style( 'tijara-admin-style', get_template_directory_uri() . '/css/admin.css' );
 	wp_enqueue_script( 'tijara-admin-script', get_template_directory_uri() . '/js/admin.js' );
+	wp_localize_script( 'tijara-admin-script', 'tijara', array(
+		'useImage' => __('Use Image', 'tijara'),
+	) ) ;
 }
 

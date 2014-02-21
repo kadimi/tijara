@@ -13,3 +13,7 @@
 .tijara_admin_fieldset_content {
 	display: none;
 }
+.tijara_admin_widget_image {
+	max-height: 64px;
+	max-width: 64px;
+}

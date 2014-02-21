@@ -381,7 +381,7 @@ body.admin-bar #site-navigation{
 }
 #site-navigation .menu > li.menu-item-has-children {
 	background: transparent url("http://findicons.com/files/icons/1689/splashy/16/arrow_state_grey_expanded.png") right 1em top 1.5em no-repeat;
-	transition: all 0.5s ease;
+	transition: all .2s ease;
 }
 #site-navigation .menu > li.menu-item-has-children a{
 	padding-right: 3em !important;
@@ -407,7 +407,7 @@ body.admin-bar #site-navigation{
 	color: #666;
 }
 #site-navigation .menu ul li.menu-item-has-children{
-	transition: all 0.5s ease;
+	transition: all .2s ease;
 	background: transparent url("http://findicons.com/files/icons/1689/splashy/16/arrow_state_grey_expanded.png") 17.5em 1em no-repeat;
 }
 #site-navigation .menu ul li:hover{
@@ -580,14 +580,14 @@ object {
 }
 .white{
 	color: white;
-	transition: all 0.5s ease;
+	transition: all .2s ease;
 }
 .black{
 	color: black;
 }
 .gray{
 	color: gray;
-	transition: all 0.5s ease;
+	transition: all .2s ease;
 }
 .strong, .bold{font-weight: bold}
 .italic, .em{font-style: italic}
@@ -675,7 +675,7 @@ object {
 }
 #secondary-menu li a{
 	color: #999;	
-	transition: all 0.5s ease;
+	transition: all .2s ease;
 }
 #secondary-menu li a:hover{
 	color: #CCC;
@@ -699,7 +699,7 @@ object {
 	border-bottom: .3rem solid #88A836;
 	overflow: hidden;
 	position: relative;
-	transition: all .5s ease;
+	transition: all .2s ease;
 	z-index: 9999;
 }
 #cart.has-items:hover{
@@ -712,7 +712,7 @@ object {
 	height: 2.8rem;
 	line-height: 2.8rem;
 	padding: 0 1.4rem;
-	transition: all .5s ease;
+	transition: all .2s ease;
 	width: calc(100% - 2.8rem);
 	z-index: 9999;
 }
@@ -721,7 +721,7 @@ object {
 	height: 8.4rem;
 	margin-bottom: -8.4rem;
 	padding: 0 1.4rem;
-	transition: all .5s ease;
+	transition: all .2s ease;
 	width: calc(100% - 2.8rem);
 	z-index: 9998;
 }
@@ -800,7 +800,7 @@ body.has-slider #sidebar {
 	cursor: pointer;
 }
 #sidebar .widget-title:after {
-	transition: all 0.5s ease;
+	transition: all .2s ease;
 	content: ".";
 	color: transparent;
 	height:16px;
@@ -813,7 +813,18 @@ body.has-slider #sidebar {
 #sidebar .collapsed .widget-title:after {
 	transform:rotate(90deg);
 }
-#sidebar a{color: white}
+#sidebar .collapsed .widget-contents {
+	display: none;
+}
+#sidebar .nocollapse .widget-title:after {
+	background-image: none;
+}
+#sidebar .nocollapse .widget-title {
+	cursor: default;
+}
+#sidebar a{
+	color: white;
+}
 #sidebar ul{
 	margin: 0;
 	list-style: none;
