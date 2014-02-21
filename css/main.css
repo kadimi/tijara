@@ -591,6 +591,12 @@ object {
 .inline{
 	display: inline;
 }
+.none{
+	display: none;
+}
+.invisible{
+	visibility: hidden;
+}
 .white{
 	color: white;
 	transition: all .2s ease;

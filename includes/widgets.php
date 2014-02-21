@@ -9,8 +9,8 @@ function tijara_widgets_init() {
 		'id'			=> 'header-center',
 		'before_widget' => '<div class="">',
 		'after_widget'  => '</div>',
-		'before_title'  => '',
-		'after_title'   => '',
+		'before_title'  => '<span class="none">',
+		'after_title'   => '</span>',
 	) );
 	register_sidebar( array(
 		'name'			=> __( 'Sidebar', 'tijara' ),
@@ -140,27 +140,23 @@ function tijara_in_widget_form_update($instance, $new_instance, $old_instance){
 }
 
 function tijara_dynamic_sidebar_params($params){
+
 	global $wp_registered_widgets;
+
 	$widget_id = $params[0]['widget_id'];
 	$widget_object = $wp_registered_widgets[$widget_id];
 	$widget_option = get_option($widget_object['callback'][0]->option_name);
 	$widget_number = $widget_object['params'][0]['number'];
-	if (isset($widget_option[$widget_number]['alignment'])){
-			if(isset($widget_option[$widget_number]['alignment'])){
-				$alignment = $widget_option[$widget_number]['alignment'];
-			} else {
-				$alignment = '';
-			}
-			$params[0]['before_widget'] = preg_replace('/class="/', 'class="'.$alignment.' ',  $params[0]['before_widget'], 1);
+
+	foreach (array('alignment', 'collapse', 'classes') as $value) {
+		if (isset($widget_option[$widget_number][$value])){
+			$option = $widget_option[$widget_number][$value];
+		} else {
+			$option = '';
+		}
+		$params[0]['before_widget'] = preg_replace('/class="/', 'class="'. $option . ' ', $params[0]['before_widget'], 1);
 	}
-	if (isset($widget_option[$widget_number]['collapse'])){
-			if(isset($widget_option[$widget_number]['collapse'])){
-				$collapse = $widget_option[$widget_number]['collapse'];
-			} else {
-				$collapse = '';
-			}
-			$params[0]['before_widget'] = preg_replace('/class="/', 'class="'.$collapse.' ',  $params[0]['before_widget'], 1);
-	}
+
 	return $params;
 }
 
