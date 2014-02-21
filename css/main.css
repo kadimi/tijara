@@ -322,6 +322,19 @@ a:active {
 	margin: 0 auto;
 }
 
+.textalignright{
+	text-align: end;
+}
+.textalignleft{
+	text-align: start;
+}
+.textaligncenter{
+	text-align: center;
+}
+.textalignjustify{
+	text-align: justify;
+}
+
 /* Clearing */
 .clear:before,
 .clear:after,

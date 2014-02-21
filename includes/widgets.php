@@ -7,8 +7,8 @@ function tijara_widgets_init() {
 	register_sidebar( array(
 		'name'			=> __( 'Header Center', 'tijara' ),
 		'id'			=> 'header-center',
-		'before_widget' => '',
-		'after_widget'  => '',
+		'before_widget' => '<div class="">',
+		'after_widget'  => '</div>',
 		'before_title'  => '',
 		'after_title'   => '',
 	) );
@@ -100,9 +100,10 @@ function tijara_in_widget_form($t, $return, $instance){
 				<label for="<?php echo $t->get_field_id('alignment'); ?>"><?php _e('Alignment', 'tijara'); ?></label>:
 				<select id="<?php echo $t->get_field_id('alignment'); ?>" name="<?php echo $t->get_field_name('alignment'); ?>">
 					<option <?php selected($instance['alignment'], '');?> value=""><?php _e('No change', 'tijara'); ?></option>
-					<option <?php selected($instance['alignment'], 'alignleft');?> value="alignleft"><?php _e('Left', 'tijara'); ?></option>
-					<option <?php selected($instance['alignment'], 'alignright');?> value="alignright"><?php _e('Right', 'tijara'); ?></option>
-					<option <?php selected($instance['alignment'], 'aligncenter');?> value="aligncenter"><?php _e('Center', 'tijara'); ?></option>
+					<option <?php selected($instance['alignment'], 'textalignleft');?> value="textalignleft"><?php _e('Left', 'tijara'); ?></option>
+					<option <?php selected($instance['alignment'], 'textalignright');?> value="textalignright"><?php _e('Right', 'tijara'); ?></option>
+					<option <?php selected($instance['alignment'], 'textaligncenter');?> value="textaligncenter"><?php _e('Center', 'tijara'); ?></option>
+					<option <?php selected($instance['alignment'], 'textalignjustify');?> value="textalignjustify"><?php _e('Justify', 'tijara'); ?></option>
 				</select>
 			</p>
 
