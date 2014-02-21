@@ -771,9 +771,20 @@ body.has-slider #main{
 #primary{
 	float: right;
 }
+.sidebar-after #container,
+.sidebar-after #primary{
+	float: left;
+}
 #content {
 	float: right;
 	width: calc(960px - 250px - 2.8rem);
+}
+.sidebar-none #content {
+	float: right;
+	width: 960px;
+}
+.sidebar-after #content {
+	float: left;
 }
 /* Sidebar */
 #sidebar {
@@ -783,6 +794,12 @@ body.has-slider #main{
 	width: 250px;
 	z-index: 500;
 	padding-top: 10px;
+}
+.sidebar-none #sidebar{
+	display: none;
+}
+.sidebar-after #sidebar{
+	float: right;
 }
 #sidebar a{
 	color: white;

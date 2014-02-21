@@ -4,57 +4,72 @@
 
 /* Landscape phones and down */
 @media (max-width: 480px) {
-	body{ 
+	body { 
 		font-size: 1.2rem;
-	}	
-	#page{ 
-		min-width: 320px;
+	}
+	#page { 
+		min-width: 240px;
 	}	
 }
 
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
+
+	body { 
+		overflow-x: hidden;
+	}
+
 	#site-navigation > .menu,
 	#main,
-	#footer-inner{
+	#footer-inner {
 		width: 100%;
 	}
 	#masthead-inner,
-	#masthead-top-inner{
+	#masthead-top-inner {
 		margin-left: auto;
 		margin-right: auto;
 		width: calc(100% - 2.8rem);
 	}
 	#container,
-	#primary{
-		box-shadow: 0 0 1px red;
+	#primary {
 		margin-left: calc(-250px);
 		margin-right: 1.4rem;
 		width: calc(100% - 5.6rem);
 	}
-	#masthead{
+	.sidebar-none #container,
+	.sidebar-none #primary {
+		width: calc(100% - 2.8rem);
+	}
+	.sidebar-after #container,
+	.sidebar-after #primary {
+		margin-left: 1.4rem;
+		margin-right: calc(-250px);
+	}
+	#masthead {
 		margin-bottom: 0;
 		padding-bottom: 1.4rem;
 	}
-	#logo{
+	#logo {
 		text-align: center;
 		width: 100%;
 	}
-	#main{
+	#main {
 		margin-bottom: 1.4rem;
 		margin-top: 1.4rem;
 	}
 	#content {
 		width: 100%;
 	}
-	#site-navigation .menu
-{
+	.sidebar-none #content {
+		width: 100%;
+	}
+	#site-navigation .menu {
 		display: none;	
 	}
-	#site-navigation{
+	#site-navigation {
 		background: #111;
 		height: 3.5rem;
-		padding: 1.4rem;
+		padding: 1.4rem 0;
 		text-align: center;
 	}
 	#s,
@@ -69,7 +84,7 @@
 		width: 49%;
 	}
 	.tinynav:before,
-	.tinynav:after{ 
+	.tinynav:after { 
 		font-family: 'FontAwesome';
 		color:red;
 		position: absolute;
@@ -78,7 +93,7 @@
 		content: "\f007";
 	}
 
-	#sidebar{
+	#sidebar {
 		margin-left: calc(-250px + 2.8rem);
 		position: relative;
 		background-image: url("http://findicons.com/files/icons/1689/splashy/16/arrow_state_grey_expanded.png");
@@ -86,10 +101,20 @@
 		background-repeat: no-repeat;
 		transition: all .2s ease;
 	}
-	#sidebar:hover{
+	.sidebar-after #sidebar {
+		margin-left: auto;
+		margin-right: calc(-250px + 2.8rem);
+		position: relative;
+		background-image: url("http://findicons.com/files/icons/1689/splashy/16/arrow_state_grey_expanded.png");
+		background-position: top .7rem left .7rem ;
+	}
+	#sidebar:hover {
 		background-position: top 1.4rem right .7rem ;
 	}
-	#sidebar .widget{
+	.sidebar-after #sidebar:hover {
+		background-position: top 1.4rem left .7rem ;
+	}
+	#sidebar .widget {
 		transition: all .2s ease;
 		visibility: hidden;
 		opacity: 0;
@@ -100,21 +125,21 @@
 	.span1, .span2, .span3,
 	.span4, .span5, .span6,
 	.span7, .span8, .span9,
-	.span10, .span11, .span12{
+	.span10, .span11, .span12 {  
 		width:100%;
 		margin-right: 0;
 	}
 	[id^="mobile-"]{
 		display: inline;
-		margin-left: 1.4rem;
+		margin-left: 1.05rem;
 	}
-	[id^="mobile-"] label{
+	[id^="mobile-"] label {
 		cursor: pointer;
 	}
-	#mobile-search form{
+	#mobile-search form {
 		display: inline;
 	}
- 	#s{
+ 	#s {
  		display: none;
 	}
 }
@@ -123,11 +148,11 @@
 @media (min-width: 768px) and (max-width: 979px) {
 	#site-navigation > .menu,
 	#main,
-	#footer-inner{
+	#footer-inner {
 		width: 100%;
 	}
 	#masthead-inner,
-	#masthead-top-inner{
+	#masthead-top-inner {
 		margin-left: auto;
 		margin-right: auto;
 		width: calc(100% - 2.8rem);
@@ -135,6 +160,10 @@
 	#container,
 	#primary {
 		width: calc(100% - 250px);
+	}
+	.sidebar-none #container,
+	.sidebar-none #primary {
+		width: calc(100% - 5.6rem);
 	}
 	#sidebar {
 		width: 250px;
@@ -144,6 +173,9 @@
 		margin-right: 2.8rem;
 		margin-left: 2.8rem;
 	}
+	.sidebar-none #content {
+		width: 100%;
+	}
 }
 
 /* Large desktop */
@@ -152,7 +184,7 @@
 	#masthead-top-inner,
 	#site-navigation > .menu,
 	#main,
-	#footer-inner{
+	#footer-inner {
 		width: 1180px;
 	}
 	#sidebar {
@@ -161,17 +193,20 @@
 	#content {
 		width: calc(1180px - 2.8rem - 250px);
 	}
+	.sidebar-none #content {
+		width: 1180px;
+	}
 }
 
 /* Mobile only stuff */
 @media (min-width: 768px) {
-	.mobile-only{
+	.mobile-only {
 		display: none;
 	}
 }
 /* Desktop only stuff */
 @media (max-width: 767px) {
-	.desktop-only{
+	.desktop-only {
 		display: none;
 	}
 }
