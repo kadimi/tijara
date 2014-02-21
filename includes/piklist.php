@@ -21,17 +21,22 @@ function tijara_settings_pages($pages){
 
 // Define a getter for options
 function tijara_option($option) {
+
+	// Todo: try with static $theme_options for less DB requests
+
 	$theme_options = get_option('tijara');
-	if(isset($theme_options[$option])){
-		return $theme_options[$option];
-	}
+
+	// var_dump($theme_options); die();
+
+	return isset($theme_options[$option]) ? $theme_options[$option] : false;
 }
 
 // Logo URL getter
 function tijara_get_logo_URL ($default = 'logo.png') {
 	$logo = tijara_option('logo');
-	if ( !empty( $logo[0] ) ) {
-		$logo_URI = wp_get_attachment_url( $logo[0] );	
+	is_array($logo) && $logo = $logo[0];
+	if ( !empty( $logo ) ) {
+		$logo_URI = wp_get_attachment_url( $logo );	
 	}
 	if ($logo_URI){
 		return $logo_URI;

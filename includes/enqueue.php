@@ -12,19 +12,18 @@ function tijara_enqueue() {
 	// wp_enqueue_style( 'tijara-style', get_stylesheet_uri() );
 
 	// The main stylesheet
-	wp_enqueue_style( 'tijara-main-style', get_template_directory_uri() . '/css/main.css' );
+	wp_enqueue_style( 'tijara-main', get_template_directory_uri() . '/css/main.css' );
 
 	// Font Awesome
-	wp_enqueue_style( 'font-awesome-style', get_template_directory_uri() . '/fonts/font-awesome/css/font-awesome.css' );
+	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/fonts/font-awesome/css/font-awesome.css' );
 
 	// The responsive stylesheet
-	if(tijara_option('responsive')) {
-		// echo 1;
-		wp_enqueue_style( 'tijara-responsive-style', get_template_directory_uri() . '/css/responsive.css' );
+	if( !tijara_option('noresponsive') ) {
+		wp_enqueue_style( 'tijara-responsive', get_template_directory_uri() . '/css/responsive.css' );
 	}
 
 	// Language specific style
-	wp_enqueue_style( 'tijara-language-style', get_template_directory_uri() . '/css/' . get_locale() . '.css' );
+	wp_enqueue_style( 'tijara-language', get_template_directory_uri() . '/css/' . get_locale() . '.css' );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -34,8 +33,12 @@ function tijara_enqueue() {
 		wp_enqueue_script( 'tijara-keyboard-image-navigation', get_template_directory_uri() . '/js/keyboard-image-navigation.js', array( 'jquery' ), '20120202' );
 	}
 
-	wp_enqueue_script( 'tijara-custom', get_template_directory_uri() . '/js/custom.js', array( 'jquery' ), false, true);
-	wp_localize_script( 'tijara-custom', 'tijara', array(
+	
+	wp_enqueue_script( 'tijara-main', get_template_directory_uri() . '/js/main.js', array( 'jquery' ), false, true);
+	if( !tijara_option('noresponsive') ) {
+		wp_enqueue_script( 'tijara-responsive', get_template_directory_uri() . '/js/responsive.js', array( 'jquery' ), false, true);
+	}
+	wp_localize_script( 'tijara-main', 'tijara', array(
 		'templateUrl' => get_template_directory_uri(),
 		'tinyNavHeader' => __('Menu', 'tijara'),
 		'tinyNavIndent' => __('&ndash; ', 'tijara'),

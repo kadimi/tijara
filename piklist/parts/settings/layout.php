@@ -15,14 +15,14 @@ piklist('field', array(
 // Responsive, yes or no
 piklist('field', array(
 	'type' => 'select'
-	,'field' => 'responsive'
-	,'label' => __('Enable responsive layout', 'tijara')
+	,'field' => 'disable_responsive'
+	,'label' => __('Disable responsive layout', 'tijara')
 	// ,'description' => __('')
 	,'choices' => array(
-		'1' => __('Yes', 'tijara')
-		,'O' => __('No', 'tijara')
+		'O' => __('No', 'tijara')
+		,'1' => __('Yes', 'tijara')
 	)
-	,'value' => '1'
+	,'value' => '0'
 ));
 
 // Responsive, yes or no

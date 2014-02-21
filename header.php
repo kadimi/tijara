@@ -67,19 +67,29 @@ global $woocommerce;
 		)); 
 		if($primary_menu){ ?>
 			<nav id="site-navigation" class="main-navigation" role="navigation">
-				<div id="mobile-navigation">
-					<label for="tinynav1" class="white"><i class="fa fa-align-justify double"></i></label>
-				</div>
+				<?php if ( tijara_option('disable_responsive') ) { ?>
+					<div id="mobile-navigation">
+						<label for="tinynav1" class="white"><i class="fa fa-align-justify double"></i></label>
+					</div>
+				<?php } ?>
+
 				<?php echo $primary_menu; ?>
-				<div id="mobile-search">
-					<form role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-						<input type="search" id="s" placeholder="<?php echo esc_attr_x( 'Search &hellip;', 'placeholder', 'tijara' ); ?>" value="<?php echo esc_attr( get_search_query() ); ?>" name="s" title="<?php _ex( 'Search for:', 'label', 'tijara' ); ?>" />
-					</form>
-					<label for="s" class="gray"><i class="fa fa-search double"></i></label>
-				</div>
+
+				<?php if ( tijara_option('disable_responsive') ) { ?>
+					<div id="mobile-search">
+						<form role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+							<input type="search" id="s" placeholder="<?php echo esc_attr_x( 'Search &hellip;', 'placeholder', 'tijara' ); ?>" value="<?php echo esc_attr( get_search_query() ); ?>" name="s" title="<?php _ex( 'Search for:', 'label', 'tijara' ); ?>" />
+						</form>
+						<label for="s" class="gray"><i class="fa fa-search double"></i></label>
+					</div>
+				<?php } ?>
+
+				<?php if ( tijara_option('disable_responsive') ) { ?>
 				<div id="mobile-cart">
 					<a href="#"><i class="fa fa-shopping-cart double"></i></a>	
 				</div>
+				<?php } ?>
+
 			</nav><!-- #site-navigation -->
 		<?php }
 	// Load images if applicable, i.e, for pages, products and product categories
