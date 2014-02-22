@@ -18,6 +18,7 @@ global $woocommerce;
 <title><?php wp_title( '|', true, 'right' ); ?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+<link rel="shortcut icon" href="<?php echo tijara_get_favicon_URL(); ?>" />
 
 <?php wp_head(); ?>
 </head>
@@ -49,12 +50,31 @@ global $woocommerce;
 			</div><!-- #masthead-top-inner -->
 		</div><!-- #masthead-top -->
 		<div id="masthead-inner">
-			<div id="logo" class="span3">
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display'))?>" rel="home"><img src="<?php echo tijara_get_logo_URL(); ?>" alt="<?php bloginfo( 'description')?>" /></a>
-			</div><!-- #logo -->
-			<div class="span9 alignright last">
+			
+			<?php if( !tijara_option('logo_position') || tijara_option('logo_position') === 'auto' ) {?>
+				<div id="logo" class="span<?php echo tijara_option('logo_width') ? tijara_option('logo_width') : 3; ?>">
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display'))?>" rel="home"><img src="<?php echo tijara_get_logo_URL(); ?>" alt="<?php bloginfo( 'description')?>" /></a>
+				</div><!-- #logo -->
+			<?php } ?>
+
+			<?php 
+				// Calculate the header widgets sidebar depending on logo position
+				if( !tijara_option('logo_position') || tijara_option('logo_position') === 'auto' ) {
+					$header_sidebar_spans = 
+						tijara_option('logo_width') 
+							? 12 - tijara_option('logo_width')
+							: 9
+					;
+					$header_sidebar_spans = 'span' . $header_sidebar_spans . ' last';
+				} else {
+					$header_sidebar_spans = 'span12';
+				}
+			?>
+			<div class="<?php echo $header_sidebar_spans; ?>">
 				<?php dynamic_sidebar( 'header-center' );?>
 			</div>
+
+
 		</div><!-- #masthead-inner -->
 	</header><!-- #masthead -->
 	<?php $primary_menu = wp_nav_menu( array(
@@ -66,7 +86,16 @@ global $woocommerce;
 			'walker' => new Tijara_Walker_Menu(),
 		)); 
 		if($primary_menu){ ?>
+			<?php
+				// Inject logo depending on theme settings
+				if( tijara_option('logo_position') === 'menu' || tijara_option('logo_position') === 'auto' ) {
+					$inject = '<li' . ( tijara_option('logo_position') === 'auto' ? ' class="none" ' : '' ) . '><a href="' . site_url() . '"><img src="' . tijara_get_favicon_URL() . '" height="32" width="32" /></a></li>'
+					;
+					$primary_menu = str_replace('class="menu"><', 'class="menu">' . $inject . '<', $primary_menu);
+				}
+			?>
 			<nav id="site-navigation" class="main-navigation" role="navigation">
+
 				<?php if ( tijara_option('disable_responsive') ) { ?>
 					<div id="mobile-navigation">
 						<label for="tinynav1" class="white"><i class="fa fa-align-justify double"></i></label>

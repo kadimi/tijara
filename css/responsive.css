@@ -18,8 +18,6 @@
 	body { 
 		overflow-x: hidden;
 	}
-
-	#site-navigation > .menu,
 	#main,
 	#footer-inner {
 		width: 100%;
@@ -146,7 +144,9 @@
 
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) {
-	#site-navigation > .menu,
+	#site-navigation > .menu{
+		width: calc(100% - 2.8rem);
+	}
 	#main,
 	#footer-inner {
 		width: 100%;
@@ -160,6 +160,9 @@
 	#container,
 	#primary {
 		width: calc(100% - 250px);
+	}
+	#site-navigation .menu > li:first-child a{
+		padding-left: 1.4rem;
 	}
 	.sidebar-none #container,
 	.sidebar-none #primary {
