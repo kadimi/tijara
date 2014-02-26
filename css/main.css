@@ -355,6 +355,11 @@ a:active {
 
 /* =Menu
 ----------------------------------------------- */
+#site-navigation,
+.sticky-wrapper{
+	width: 960px;
+	margin: auto;
+}
 body.admin-bar #site-navigation{
 
 }
@@ -373,7 +378,6 @@ body.admin-bar #site-navigation{
 	height: 5.6rem;
 	list-style: none;
 	margin: auto;
-	width: 960px;
 }
 #site-navigation li a {
 	border-left: solid .01rem rgba(100%, 100%, 100%, .25);
@@ -387,7 +391,6 @@ body.admin-bar #site-navigation{
 }
 #site-navigation .menu > li.none:first-child ~ li:nth-child(2) a,
 #site-navigation .menu > li:not(.none):first-child a{
-    padding-left: 0;
 	border-left: none;
 }
 #site-navigation .menu > li:last-child a{
@@ -451,7 +454,6 @@ body.admin-bar #site-navigation{
 .sticky-wrapper .stuck{
 	position: fixed;
 	top: 0;
-	width: 100%;
 	z-index: 999;
 }
 
@@ -679,7 +681,7 @@ header .search-submit,
 }
 
 /* Page: #page */
-.no-responsive #paged{
+.no-responsive #page{
 	min-width: 980px;
 }
 
@@ -739,6 +741,7 @@ header .search-submit,
 }
 #cart{
 	overflow: hidden;
+	position: relative;
 	transition: all .2s ease;
 	z-index: 9999;
 }
@@ -757,7 +760,6 @@ header .search-submit,
 	padding: 0 1.4rem;
 	transition: all .2s ease;
 	width: calc(100% - 2.8rem);
-	z-index: 9999;
 }
 #cart #cart-contents{
 	background: #999;

@@ -18,8 +18,10 @@
 	body { 
 		overflow-x: hidden;
 	}
+	#footer-inner,
 	#main,
-	#footer-inner {
+	#site-navigation,
+	.sticky-wrapper {
 		width: 100%;
 	}
 	#masthead-inner,
@@ -152,17 +154,19 @@
 
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) {
-	#site-navigation > .menu{
-		width: calc(100% - 2.8rem);
-	}
+	#footer-inner,
 	#main,
-	#footer-inner {
+	#site-navigation,
+	.sticky-wrapper{
 		width: 100%;
 	}
 	#masthead-inner,
 	#masthead-top-inner {
 		margin-left: auto;
 		margin-right: auto;
+		width: calc(100% - 2.8rem);
+	}
+	#site-navigation > .menu{
 		width: calc(100% - 2.8rem);
 	}
 	#container,
@@ -191,10 +195,11 @@
 
 /* Large desktop */
 @media (min-width: 1200px) {
+	#main,
 	#masthead-inner,
 	#masthead-top-inner,
-	#site-navigation > .menu,
-	#main,
+	#site-navigation,
+	.sticky-wrapper,
 	#footer-inner {
 		width: 1180px;
 	}
