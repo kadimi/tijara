@@ -173,8 +173,13 @@
 	#primary {
 		width: calc(100% - 250px);
 	}
-	#site-navigation .menu > li:first-child a{
+	#site-navigation li a {
 		padding-left: 1.4rem;
+		padding-right: 1.4rem;
+	}
+	#site-navigation .menu > li.none:first-child ~ li:nth-child(2) a,
+	#site-navigation .menu > li:not(.none):first-child a {
+		padding-left: 0rem;
 	}
 	.sidebar-none #container,
 	.sidebar-none #primary {
