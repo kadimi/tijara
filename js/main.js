@@ -48,23 +48,17 @@ jQuery(document).ready(function ($) {
         $('#site-navigation').waypoint(function (direction) {
             clearTimeout(stickyTimeOut);
             stickyTimeOut = setTimeout(function() {
-                switch (direction) {
-                case 'down':
-                    $('#site-navigation .menu > li.none')
-                        .hide()
-                        .removeClass('none')
-                        .fadeIn('fast', function () {
-                            $(this).addClass('none-hold');
-                        });
-                    break;
-                case 'up':
-                    $('#site-navigation .menu > li.none-hold')
-                        .fadeOut('fast', function () {
-                            $(this).addClass('none').removeClass('none-hold');
-                        });
-                    break;
-                }
-            }, 100)
+                $('#site-navigation.stuck .menu > li.none')
+                    .hide()
+                    .removeClass('none')
+                    .fadeIn('fast', function () {
+                        $(this).addClass('none-hold');
+                    });
+                $('#site-navigation:not(.stuck) .menu > li.none-hold')
+                    .fadeOut('fast', function () {
+                        $(this).addClass('none').removeClass('none-hold');
+                    });
+            }, 600)
         });
     }
 
