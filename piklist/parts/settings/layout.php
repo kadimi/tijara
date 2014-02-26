@@ -49,14 +49,29 @@ piklist('field', array(
 	,'label' => 'Logo width (in spans)'
 	,'help' => 'How many header spans (out of 12) will the logo occupy?'
 	,'choices' => array(
-		'1' => __('1', 'tijara')
-		,'2' => __('2', 'tijara')
+		'1' => '1'
+		,'2' => '2'
 		,'3' => __('3 (1/4th of the header width)', 'tijara')
 		,'4' => __('4 (1/3rd of the header width)', 'tijara')
 		,'6' => __('6 (half the header width)', 'tijara')
 		,'12' => __('12 (the full header)', 'tijara')
 	)
 	,'value' => '3'
+));
+
+// Top bar content
+piklist('field', array(
+	'type' => 'radio'
+	,'field' => 'top_bar'
+	,'label' => __('Top bar contents', 'tijara')
+	,'choices' => array(
+		'menu' => __('Menu', 'tijara')
+		,'cart' => __('Cart', 'tijara')
+		,'all' => __('All', 'tijara')
+		,'none' => __('None', 'tijara')
+	)
+	,'list' => false
+	,'value' => 'all'
 ));
 
 // Sticky menu

@@ -26,28 +26,39 @@ global $woocommerce;
 <div id="page" class="hfeed site">
 	<?php do_action( 'before' ); ?>
 	<header id="masthead" class="site-header" role="banner">
+		<?php if ( tijara_option('top_bar') !== 'none' ) { ?>
 		<div id="masthead-top">
 			<div id="masthead-top-inner">
-				<?php 
-					$secondary_menu = wp_nav_menu(
-						array(
-							'container' => FALSE,
-							'depth' => 1,
-							'echo' => FALSE,
-							'fallback_cb' => '__return_false',
-							'menu_class' => '',
-							'theme_location' => 'secondary_menu',
-						)
-					);
-					// if (!empty($secondary_menu)) {
-						echo '<div id="secondary-menu" class="span8">'.$secondary_menu.'</div>';
-					// }
-					if(kds_woocommerce_installed()) {
+				<?php
+					// Show menu depending on theme option
+					// Will show the menu, or it's placeholder if empty to preserve design
+					if ( in_array(tijara_option('top_bar'), array('menu', 'all')) ) {
+						$secondary_menu = wp_nav_menu(
+							array(
+								'container' => FALSE,
+								'depth' => 1,
+								'echo' => FALSE,
+								'fallback_cb' => '__return_false',
+								'menu_class' => '',
+								'theme_location' => 'secondary_menu',
+							)
+						);
+						if( !empty($secondary_menu) ) {
+							echo '<div id="secondary-menu" class="span8">'.$secondary_menu.'</div>';
+						} else {
+							echo '<div class="span8"></div>';
+						}
+					} else {
+						echo '<div class="span8"></div>';
+					}
+					// Show cart depending on woocommerce and theme option
+					if(kds_woocommerce_installed() && in_array(tijara_option('top_bar'), array('cart', 'all'))) {
 						kds_woocommerce_cart_botton();
 					} 
 				?>
 			</div><!-- #masthead-top-inner -->
 		</div><!-- #masthead-top -->
+		<?php } ?>
 		<div id="masthead-inner">
 			
 			<?php if( !tijara_option('logo_position') || tijara_option('logo_position') === 'header' ) {?>
