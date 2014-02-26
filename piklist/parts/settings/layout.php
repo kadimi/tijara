@@ -33,13 +33,13 @@ piklist('field', array(
 	,'field' => 'logo_position'
 	,'label' => __('Logo position', 'tijara')
 	,'choices' => array(
-		'' => __('The header', 'tijara') /* Default */
+		'' => __('Automatic', 'tijara')
+		,'header' => __('The header', 'tijara') /* Default */
 		,'menu' => __('The primary menu (uses favicon)', 'tijara')
-		,'auto' => __('Automatic', 'tijara')
 		,'none' => __('Hidden', 'tijara')
 	)
 	,'list' => false
-	, 'value' => '0'
+	, 'value' => ''
 ));
 
 // Logo Width
@@ -59,22 +59,36 @@ piklist('field', array(
 	,'value' => '3'
 ));
 
-// Responsive, yes or no
+// Sticky menu
 piklist('field', array(
-	'type' => 'select'
-	,'field' => 'disable_responsive'
-	,'label' => __('Disable responsive layout', 'tijara')
-	// ,'description' => __('')
+	'type' => 'radio'
+	,'field' => 'disable_sticky'
+	,'label' => __('Disable sticky menu', 'tijara')
 	,'choices' => array(
-		'O' => __('No', 'tijara')
+		'0' => __('No', 'tijara')
 		,'1' => __('Yes', 'tijara')
 	)
+	,'list' => false
 	,'value' => '0'
 ));
 
 // Responsive, yes or no
 piklist('field', array(
-	'type' => 'select'
+	'type' => 'radio'
+	,'field' => 'disable_responsive'
+	,'label' => __('Disable responsive layout', 'tijara')
+	// ,'description' => __('')
+	,'choices' => array(
+		'0' => __('No', 'tijara')
+		,'1' => __('Yes', 'tijara')
+	)
+	,'list' => false
+	,'value' => '0'
+));
+
+// Responsive, yes or no
+piklist('field', array(
+	'type' => 'radio'
 	,'field' => 'sidebar_position'
 	,'label' => __('Sidebar position', 'tijara')
 	// ,'description' => __('')
@@ -82,6 +96,7 @@ piklist('field', array(
 		'before' => __('Before main content', 'tijara')
 		,'after' => __('After main content', 'tijara')
 	)
+	,'list' => false
 	,'value' => 'before'
 ));
 

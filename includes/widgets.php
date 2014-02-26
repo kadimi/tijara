@@ -65,9 +65,94 @@ add_filter('dynamic_sidebar_params', 'tijara_dynamic_sidebar_params');
 
 function tijara_in_widget_form($t, $return, $instance){
 
+	// Define the options
+	/**
+	 *  // Example with all options
+	 *	$tijara_widget_options = array(
+	 *		array (
+	 *			'group' => __('Some Group', 'tijara')
+	 *			'type' => 'text (default)/select/radio/checkbox',
+	 *			'name' => 'option_name'
+	 *			'label' => __('Option Name', 'tijara'),
+	 *			'choices' => array(
+	 *				'value' => __('Label', 'tijara'), 
+	 *			),
+	 *			'order' => 1,
+	 *		)
+	 *	);
+	 */
+
+	// Set defaults
+	$tijara_widget_options = array(
+		array (
+			'group' => __('Display settings', 'tijara'),
+			'type' => 'select',
+			'name' => 'dummy',
+			'label' => __('Dummy', 'tijara'),
+			'choices' => array(
+				'_null' => __('Ignore setting', 'tijara'), 
+				'0' => __('No (default)', 'tijara'), 
+				'1' => __('Yes', 'tijara'), 
+			),
+		)
+	);
+
+	$tijara_widget_options = array();
+	
+	// Handle defaults
+	reset($tijara_widget_options);
+	foreach ($tijara_widget_options as $option) {
+		
+		$instance = wp_parse_args( (array) $instance, array($option['name'] => '') );
+		if ( !isset($instance[$option['name']]) ){
+			$instance[$option['name']] = null;
+		}
+		// Output
+		$field['id'] = $t->get_field_id($instance[$option['name']]);
+		$field['name'] = $t->get_field_name($instance[$option['name']]);
+		$option['value'] = $instance[$option['name']];
+		?>
+		
+		<p>
+			<label for="<?php echo $field['id']; ?>"><?php echo $option['label']; ?></label>:
+			<br />
+			
+			<?php switch ($option['type']) {
+				case 'text':
+					?>
+					<input 
+						type="text" 
+						name="<?php echo $field['name']; ?>"  
+						id="<?php echo $t->get_field_id($option['name']); ?>" 
+						value="<?php echo $option['value'] ;?>" 
+					/>
+					<?php
+					break;
+				case 'select':
+					?>
+					<select
+						name="<?php echo $field['name']; ?>"  
+						id="<?php echo $t->get_field_id($option['name']); ?>" 
+						value="<?php echo $option['value'] ;?>" 
+					/>
+						<?php foreach ($option['choices'] as $key => $value) { ?>
+							<option value="<?php echo $value; ?>"><?php echo $value; ?></input>
+						<?php } ?>
+					</select>
+					<?php
+					break;
+			} ?>
+		</p>
+		
+		<?php
+	}
+
+	// Print options
+
+
 	$instance = wp_parse_args( (array) $instance, array( 
 		'alignment' => '', /* (none), left, right, center */
-		'collapse' => '', /* (expanded), collapsed, nocollapse */
+		'collapse' => '', /* (expanded), collapsed, no-collapse */
 	) );
 
 	if ( !isset($instance['alignment']) ){
@@ -112,7 +197,7 @@ function tijara_in_widget_form($t, $return, $instance){
 				<select id="<?php echo $t->get_field_id('collapse'); ?>" name="<?php echo $t->get_field_name('collapse'); ?>">
 					<option <?php selected($instance['collapse'], '');?> value=""><?php _e('Start expanded', 'tijara'); ?></option>
 					<option <?php selected($instance['collapse'], 'collapsed');?> value="collapsed"><?php _e('Start collapsed', 'tijara'); ?></option>
-					<option <?php selected($instance['collapse'], 'nocollapse');?> value="nocollapse"><?php _e('Disable feature', 'tijara'); ?></option>
+					<option <?php selected($instance['collapse'], 'no-collapse');?> value="no-collapse"><?php _e('Disable feature', 'tijara'); ?></option>
 				</select>
 			</p>
 
@@ -219,10 +304,13 @@ function tijara_body_class($classes) {
 
 	global $sidebars_widgets;
 
+	// Responsive
+	$classes[] = ( tijara_option('disable_responsive') ? 'no-' : '') . 'responsive';
+
 	// Sidebar position
 	$classes[] = 'sidebar-' . tijara_option('sidebar_position');
 
-	// Handle empty sidebar
+	// Sidebar position
 	if(empty($sidebars_widgets['sidebar-1'])){
 		$classes = array_values(array_diff($classes,array('sidebar-before')));
 		$classes = array_values(array_diff($classes,array('sidebar-after')));
