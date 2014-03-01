@@ -7,7 +7,10 @@ jQuery(document).ready(function ($) {
         header: tijara.tinyNavHeader,
         indent: tijara.tinyNavIndent
     });
-    $(".tinynav").wrap("<div class='mobile-only inline'></div>");
+    $(".tinynav")
+        .wrap("<div class='mobile-only inline'></div>");
+    $(".tinynav option:empty").remove();
+
 
     //Switch mobile fields on label click
     $('label[for="s"], label[for="tinynav1"]').click(function () {

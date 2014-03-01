@@ -307,6 +307,42 @@ function tijara_body_class($classes) {
 	// Responsive
 	$classes[] = ( tijara_option('disable_responsive') ? 'no-' : '') . 'responsive';
 
+	// Main menu width
+	if ( tijara_option('menu_width') === 'wide' ) {
+		$classes[] = 'menu-wide';
+	}
+
+	// Top bar
+	if ( tijara_option('topbar_menu') === '0' ) { 
+		$classes[] = 'no-topbar';
+	}
+
+	// Sticky
+	if ( !tijara_option('sticky') || in_array('menu', tijara_option('sticky')) ) { 
+		$classes[] = 'sticky-menu';
+	}
+	if ( in_array('topbar', tijara_option('sticky')) ) { 
+		$classes[] = 'sticky-topbar';
+	}
+
+	// Boxed
+	if ( tijara_option('boxed') === '1' ) { 
+		$classes[] = 'boxed';
+	}
+
+	// Top menu
+	$primary_menu = wp_nav_menu( array(
+		'container' => FALSE,
+		'container_class' => 'desktop-only',
+		'echo' => FALSE,
+		'fallback_cb' => FALSE,
+		'theme_location' => 'primary',
+		'walker' => new Tijara_Walker_Menu(),
+	));
+	if ( empty($primary_menu) ) {
+		$classes[] = 'no-menu';
+	}
+
 	// Sidebar position
 	$classes[] = 'sidebar-' . tijara_option('sidebar_position');
 

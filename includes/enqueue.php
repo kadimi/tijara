@@ -45,10 +45,34 @@ function tijara_enqueue() {
 		'tinyNavHeader' => __('Menu', 'tijara'),
 		'tinyNavIndent' => __('&ndash; ', 'tijara'),
 		'tinyNavHeader' => __('Go to...', 'tijara'),
-		'disable_responsive' => (int) tijara_option(disable_responsive),
-		'disable_sticky' => (int) tijara_option(disable_sticky),
 	) ) ;
 
+}
+
+/**
+ * CSS, inline
+ */
+add_action( 'wp_enqueue_scripts', 'tijara_inline_css' );
+function tijara_inline_css() {
+
+	$css = '';
+	if( tijara_option('boxed') === '1' && $background_image = tijara_get_background_URL() ) {
+
+		$css = "body{background: url(\"$background_image\") fixed}";
+		switch (tijara_option('background_style')) {
+			case 'repeat-x':
+				$css .= "body{background-repeat:repeat-x}";
+				break;
+			case 'repeat-y':
+				$css .= "body{background-repeat:repeat-y}";
+				break;
+			case 'stretch':
+				$css .= "body{background-size:cover}";
+				break;
+		}
+
+	}
+	wp_add_inline_style( 'tijara-main', $css );
 }
 
 /**
@@ -69,14 +93,19 @@ function tijara_nprogress_inline_enqueue() {
   if ( wp_script_is( 'jquery', 'done' ) ) {
 	?><script>
 		// Todo: Minify 
+		NProgress.configure({showSpinner: false});
 		NProgress.start();
-		var interval = setInterval(function() { NProgress.inc(); }, 1000);
+		var interval = setInterval(function() { NProgress.inc(); }, 200);
 		jQuery(window).load(function(){
 			clearInterval(interval);
 			NProgress.done();
 		});
 		jQuery(window).unload(function(){
-			NProgress.start();
+
+			// Do not show on unload on Chrome or Chromium, flickering bug
+			if ( !/chrom(e|ium)/.test(navigator.userAgent.toLowerCase()) ) {
+				NProgress.start();
+			}
 		});
 	</script><?php }
 }
@@ -98,8 +127,8 @@ function tijara_enqueue_admin () {
  */
 add_filter( 'wp_default_scripts', 'remove_jquery_migrate' );
 function remove_jquery_migrate( &$scripts) {
-    if ( !is_admin() ) {
-        $scripts->remove( 'jquery');
-        $scripts->add( 'jquery', false, array( 'jquery-core' ), '1.10.2' );
-    }
+	if ( !is_admin() ) {
+		$scripts->remove( 'jquery');
+		$scripts->add( 'jquery', false, array( 'jquery-core' ), '1.10.2' );
+	}
 }

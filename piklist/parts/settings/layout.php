@@ -10,8 +10,8 @@ piklist('field', array(
 	,'field' => 'logo'
 	,'label' => __('Logo', 'tijara')
 	,'options' => array(
-		'button' => __('Upload or Choose Logo', 'tijara')
-		,'modal_title' => __('Upload or Choose a logo', 'tijara')
+		'button' => __('Upload or choose logo', 'tijara')
+		,'modal_title' => __('Upload or choose a logo', 'tijara')
 	)
 ));
 
@@ -22,7 +22,7 @@ piklist('field', array(
 	,'help' => __('The rRecommanded size is 60x60', 'tijara')
 	,'label' => __('Shortcut Icon (favicon)', 'tijara')
 	,'options' => array(
-		'button' => __('Upload or Choose a favicon', 'tijara')
+		'button' => __('Upload or choose a favicon', 'tijara')
 		,'modal_title' => __('Upload or choose a favicon', 'tijara')
 	)
 ));
@@ -59,32 +59,57 @@ piklist('field', array(
 	,'value' => '3'
 ));
 
+// Top bar menu
+piklist('field', array(
+	'type' => 'radio'
+	,'field' => 'topbar_menu'
+	,'label' => __('Show top bar menu', 'tijara')
+	,'choices' => array(
+		'1' => __('Yes', 'tijara')
+		,'0' => __('No', 'tijara')
+	)
+	,'list' => false
+	,'value' => '1'
+));
+
 // Top bar content
 piklist('field', array(
 	'type' => 'radio'
-	,'field' => 'top_bar'
-	,'label' => __('Top bar contents', 'tijara')
+	,'field' => 'topbar_plus'
+	,'label' => __('Top additionnal components', 'tijara')
 	,'choices' => array(
-		'menu' => __('Menu', 'tijara')
-		,'cart' => __('Cart', 'tijara')
-		,'all' => __('All', 'tijara')
-		,'none' => __('None', 'tijara')
+		'cart' => __('Cart', 'tijara')
+		,'social' => __('Social icons', 'tijara')
+		,'cart|social' => __('Cart then social icons', 'tijara')
+		,'social|cart' => __('Social then cart icons', 'tijara')
 	)
 	,'list' => false
-	,'value' => 'all'
 ));
 
-// Sticky menu
+// Main menu width
 piklist('field', array(
 	'type' => 'radio'
-	,'field' => 'disable_sticky'
-	,'label' => __('Disable sticky menu', 'tijara')
+	,'field' => 'menu_width'
+	,'label' => __('Main menu width', 'tijara')
 	,'choices' => array(
-		'0' => __('No', 'tijara')
-		,'1' => __('Yes', 'tijara')
+		'normal' => __('Normal', 'tijara')
+		,'wide' => __('Wide (fit page)', 'tijara')
 	)
 	,'list' => false
-	,'value' => '0'
+	,'value' => 'normal'
+));
+
+// Sticky
+piklist('field', array(
+	'type' => 'checkbox'
+	,'field' => 'sticky'
+	,'label' => __('Enable sticky', 'tijara')
+	,'choices' => array(
+		'topbar' => __('Top bar', 'tijara')
+		,'menu' => __('Main menu', 'tijara')
+	)
+	,'list' => false
+	,'value' => 'menu'
 ));
 
 // Responsive, yes or no
@@ -94,11 +119,62 @@ piklist('field', array(
 	,'label' => __('Disable responsive layout', 'tijara')
 	// ,'description' => __('')
 	,'choices' => array(
-		'0' => __('No', 'tijara')
-		,'1' => __('Yes', 'tijara')
+		'1' => __('Yes', 'tijara')
+		,'0' => __('No', 'tijara')
 	)
 	,'list' => false
 	,'value' => '0'
+));
+
+// Boxed 
+piklist('field', array(
+	'type' => 'radio'
+	,'field' => 'boxed'
+	,'label' => __('Use boxed layout', 'tijara')
+	// ,'description' => __('')
+	,'choices' => array(
+		'1' => __('Yes', 'tijara')
+		,'0' => __('No', 'tijara')
+	)
+	,'list' => false
+	,'value' => '0'
+));
+
+// Boxed > background
+piklist('field', array(
+	'type' => 'file'
+	,'field' => 'background'
+	,'label' => __('Website background image', 'tijara')
+	,'options' => array(
+		'button' => __('Upload or choose a background image', 'tijara')
+		,'modal_title' => __('Upload or choose a background image', 'tijara')
+	)
+	,'conditions' => array(
+		array(
+			'field' => 'boxed'
+			,'value' => '1'
+		)
+	)
+));
+
+// Boxed > background > style
+piklist('field', array(
+	'type' => 'select'
+	,'field' => 'background_style'
+	,'label' => __('Background image style', 'tijara')
+	,'choices' => array(
+		'repeat' => __('Repeat', 'tijara')
+		,'repeat-x' => __('Repeat horizontaly (repeat-x)', 'tijara')
+		,'repeat-y' => __('Repeat verticaly (repeat-y)', 'tijara')
+		,'stretch' => __('Stretch', 'tijara')
+	)
+	,'conditions' => array(
+		array(
+			'field' => 'boxed'
+			,'value' => '1'
+		)
+	)
+	,'value' => 'repeat'
 ));
 
 // Responsive, yes or no
@@ -115,3 +191,17 @@ piklist('field', array(
 	,'value' => 'before'
 ));
 
+// Socials links
+piklist('field', array(
+	'type' => 'text'
+	,'field' => 'social_links'
+	,'add_more' => true
+	,'columns' => 12
+	,'help' => 'Tijara will automatically use the right icon when displaying the link'
+	,'label' => 'Social links'
+	,'attributes' => array(
+		'label' => 'eg. https://www.facebook.com/tijara'
+		,'placeholder' => 'eg. https://www.facebook.com/tijara'
+	),
+	'list' => false
+));

@@ -18,6 +18,16 @@
 	body { 
 		overflow-x: hidden;
 	}
+	.boxed #page,
+	#page{
+		margin: 0;
+		width: auto;
+	}
+	.boxed #site-navigation,
+	.boxed .sticky-wrapper,
+	.boxed #masthead-top,
+	.boxed #masthead-top.stuck,
+	.boxed #page,
 	#footer-inner,
 	#main,
 	#site-navigation,
@@ -108,9 +118,10 @@
 	.sidebar-after #sidebar {
 		margin-left: auto;
 		margin-right: calc(-250px + 2.8rem);
-		position: relative;
-		background-image: url("http://findicons.com/files/icons/1689/splashy/16/arrow_state_grey_expanded.png");
 		background-position: top .7rem left .7rem ;
+	}
+	.sidebar-after #sidebar.expanded {
+		margin-right: 0;
 	}
 	#sidebar:hover {
 		background-position: top 1.4rem right .7rem ;
@@ -154,6 +165,20 @@
 
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) {
+	.boxed #page,
+	#page{
+		width: auto;
+		margin: 0;
+	}
+	.boxed #site-navigation,
+	.boxed .sticky-wrapper,
+	.boxed #masthead-top,
+	.boxed #masthead-top.stuck,
+	.boxed #page,
+	#footer-inner,
+	#main,
+	#site-navigation,
+	.sticky-wrapper 
 	#footer-inner,
 	#main,
 	#site-navigation,
@@ -177,21 +202,22 @@
 		padding-left: 1.4rem;
 		padding-right: 1.4rem;
 	}
-	#site-navigation .menu > li.none:first-child ~ li:nth-child(2) a,
-	#site-navigation .menu > li:not(.none):first-child a {
+	/* Todo: is this doing anything actually */
+	body:not(.menu-wide) #site-navigation .menu > li.none:first-child ~ li:nth-child(2) a,
+	body:not(.menu-wide) #site-navigation .menu > li:not(.none):first-child a {
 		padding-left: 0rem;
 	}
 	.sidebar-none #container,
 	.sidebar-none #primary {
-		width: calc(100% - 5.6rem);
+		width: calc(100% - 2.8rem);
 	}
 	#sidebar {
 		width: 250px;
 	}
 	#content {
-		width: calc(100% - 5.6rem);
-		margin-right: 2.8rem;
-		margin-left: 2.8rem;
+		width: calc(100% - 2.8rem);
+		margin-right: 1.4rem;
+		margin-left: 1.4rem;
 	}
 	.sidebar-none #content {
 		width: 100%;
@@ -200,19 +226,42 @@
 
 /* Large desktop */
 @media (min-width: 1200px) {
+	.boxed #page,
+	.boxed #masthead-top{
+		width: 1180px;
+	}
+	.boxed #masthead-top,
+	.boxed #masthead-top.stuck,
+	.boxed #site-navigation,
+	.boxed .sticky-wrapper,
+	.boxed #page,
 	#main,
 	#masthead-inner,
 	#masthead-top-inner,
 	#site-navigation,
+	#site-navigation .menu,
 	.sticky-wrapper,
 	#footer-inner {
 		width: 1180px;
+	}
+	.boxed #site-navigation,
+	.boxed .sticky-wrapper { 
+		width: 1180px;
+	}
+	.boxed #masthead-inner,
+	.boxed #masthead-top-inner,
+	.boxed #site-navigation .menu{
+		width: calc(1180px - 5.6rem);
 	}
 	#sidebar {
 		width: 250px;
 	}
 	#content {
 		width: calc(1180px - 2.8rem - 250px);
+	}
+	.xboxed #content {
+		margin-right: 2.8rem;
+		width: calc(1180px - 5.6rem - 250px);
 	}
 	.sidebar-none #content {
 		width: 1180px;

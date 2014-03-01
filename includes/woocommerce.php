@@ -10,12 +10,12 @@ function kds_woocommerce_installed() {
 
 // Check it's a product page
 function kds_is_product() {
-	return kds_woocommerce_installed() AND is_product();
+	return kds_woocommerce_installed() && is_product();
 }
 
 // Check it's a product category
 function kds_is_product_category() {
-	return kds_woocommerce_installed() AND is_product_category();
+	return kds_woocommerce_installed() && is_product_category();
 }
 
 // Remove prettyPhoto lightbox from reviews, not compatible with Raty
@@ -158,11 +158,16 @@ function woocommerce_header_add_to_cart_fragment( $fragments ) {
 
 // The shopping cart box code generator
 function kds_woocommerce_cart_botton() {
+
+	if (!kds_woocommerce_installed()) {
+		return;
+	}
+
 	global $woocommerce; 
 	$cart_contents_count = $woocommerce->cart->cart_contents_count;
-	$spans = (int) $spans; 
+	
 	?>
-	<a class="<?php echo $cart_contents_count ? 'has-items ' :'' ?>span4 last desktop-only" id="cart" rel="nofollow" href="<?php echo $woocommerce->cart->get_cart_url(); ?>" >
+	<a class="<?php echo $cart_contents_count ? 'has-items ' :'' ?>one-full" id="cart" rel="nofollow" href="<?php echo $woocommerce->cart->get_cart_url(); ?>" >
 		<div class="one-full" id="cart-icon"><?php echo $cart_contents_count ? __('Your cart has items', 'tijara') : __('Your cart is empty', 'tijara')?> <i class="alignright double fa fa-shopping-cart"></i></div>
 		<div class="one-full" id="cart-contents">
 			<span class="black"><?php _e('Shopping cart total', 'tijara')?>:</span> <span class="white strong"><?php echo $woocommerce->cart->get_cart_total(); ?></span> <span class="black small">/ <?php  _e('Number of items:', 'tijara')?> <span class="white strong"><?php echo $cart_contents_count; ?></span></span>

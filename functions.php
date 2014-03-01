@@ -18,6 +18,7 @@ function tijara_bootstrap() {
 	locate_template(array('includes/slideshow.php'), true, true);
 	locate_template(array('includes/social.php'), true, true);
 	locate_template(array('includes/tweaks.php'), true, true);
+	locate_template(array('includes/utils.php'), true, true);
 	locate_template(array('includes/widgets.php'), true, true);
 	locate_template(array('includes/woocommerce.php'), true, true);
 }

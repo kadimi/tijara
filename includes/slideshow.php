@@ -5,8 +5,7 @@
 add_action('wp_head', 'nivoSlider');
 function nivoSlider() {
 	if (is_page() OR get_post_type('') == 'product' OR kds_is_product_category()){
-		?><script type="text/javascript">
-		/* <![CDATA[ */
+		?><script>
 			jQuery(document).ready(function($){
 				// strip BR elements created by Wordpress
 				$('#slider .nivoSlider br').each(function(){ 
@@ -24,12 +23,11 @@ function nivoSlider() {
 				$('a.nivo-control').length == 1 && $('a.nivo-control').css('visibility', 'hidden');
 				// Add the class 'has-slider' to the body classes
 				$('body')
-					.filter(function () {return $('.nivoSlider').length})
-					.addClass('has-slider')
-				;
+					.filter(function () {
+						return $('.nivoSlider').length;
+					})
+					.addClass('has-slider');
 			});
-		/* ]]> */
 		</script><?php
 	}
 }
-

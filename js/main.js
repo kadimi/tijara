@@ -3,17 +3,18 @@ jQuery(document).ready(function ($) {
     'use strict';
 
     // Prepare booleans from "0"/"1"
-    tijara.disable_sticky = Boolean (parseInt(tijara.disable_sticky));
-    tijara.disable_responsive = Boolean (parseInt(tijara.disable_responsive));
+    tijara.disable_responsive = Boolean ($('body.no-responsive').length);
+    tijara.sticky_menu = Boolean ($('body.sticky-menu').length);
+    tijara.sticky_topbar = Boolean ($('body.sticky-topbar').length);
 
     // Classes 2 Declarations
-    $("[class^='c2d_'],div[class*=' c2d_']").each(function () {
+    $("[class^='c2d_'],[class*=' c2d_']").each(function () {
 
         var c2d, c2d_array = [], declaration;
         var classes = $(this).attr('class');
         var c2d_regex = /\bc2d_[a-zA-Z0-9_]+_[a-zA-Z0-9_]+\b/g;
         
-        while( c2d = c2d_regex.exec(classes) ){
+        while( c2d = c2d_regex.exec(classes) ) {
             c2d_array.push(c2d[0]);
         }
 
@@ -36,18 +37,32 @@ jQuery(document).ready(function ($) {
         clearTimeout(woocommerce_cart_timeout);
         woocommerce_cart_timeout = setTimeout(function () {
             $('#cart').removeClass('expanded');        
-        }, 2000); 
+        }, 5000); 
     });
 
-    // Stick nav menu
-    if (!tijara.disable_sticky) {
+    // Sticky top bar
+    if (tijara.sticky_topbar) {
 
-        var stickyTimeOut = false;
+        //var stickyTimeOut1 = false;
 
-        $('#site-navigation').waypoint('sticky');
+        $('#masthead-top').waypoint('sticky');
+        // $('#masthead-top').waypoint(function (direction) { }));
+    }
+
+    // Sticky main menu
+    if (tijara.sticky_menu) {
+
+        var stickyTimeOut2 = false;
+        var sticky_menu_offset = 0;
+
+        if( tijara.sticky_topbar && !$('body').hasClass('no-topbar')) {
+            sticky_menu_offset = 31;
+        }
+
+        $('#site-navigation').waypoint('sticky', {offset: sticky_menu_offset});
         $('#site-navigation').waypoint(function (direction) {
-            clearTimeout(stickyTimeOut);
-            stickyTimeOut = setTimeout(function() {
+            clearTimeout(stickyTimeOut2);
+            stickyTimeOut2 = setTimeout(function() {
                 $('#site-navigation.stuck .menu > li.none')
                     .hide()
                     .removeClass('none')
@@ -59,7 +74,7 @@ jQuery(document).ready(function ($) {
                         $(this).addClass('none').removeClass('none-hold');
                     });
             }, 600)
-        });
+        }, {offset: sticky_menu_offset});
     }
 
     // Remove unwanted generated spans
