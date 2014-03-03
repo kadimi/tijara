@@ -33,11 +33,13 @@ jQuery(document).ready(function ($) {
 
     // Expand/collapse cart when product is added
     $('body').on('added_to_cart', function () {
-        $('#cart').addClass('expanded');
-        clearTimeout(woocommerce_cart_timeout);
-        woocommerce_cart_timeout = setTimeout(function () {
-            $('#cart').removeClass('expanded');        
-        }, 5000); 
+        setTimeout(function () { 
+            $('#cart').addClass('expanded');
+            clearTimeout(woocommerce_cart_timeout);
+            woocommerce_cart_timeout = setTimeout(function () {
+                $('#cart').removeClass('expanded');        
+            }, 2400); 
+        }, 1);
     });
 
     // Sticky top bar

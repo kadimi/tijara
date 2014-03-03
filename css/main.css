@@ -358,16 +358,7 @@ a:active {
 #site-navigation,
 #site-navigation .menu,
 .sticky-wrapper {
-	width: 960px;
 	margin: auto;
-}
-.menu-wide #site-navigation,
-.menu-wide .sticky-wrapper { 
-	width: 100%;
-}
-.boxed #site-navigation,
-.boxed .sticky-wrapper { 
-	width: 980px;
 }
 body.admin-bar #site-navigation {
 
@@ -377,8 +368,6 @@ body.admin-bar #site-navigation {
 	background: rgb(51, 51, 51);
 	border-bottom: solid .5rem #88A836;
 	height: 5.6rem;
-	transition: opacity .2s ease;
-	transition: box-shadow 2s ease;
 	box-shadow: 
 		0 .7rem .35rem -.35rem rgba(00%, 00%, 00%, .5),
 		0 .2rem .1rem -.1rem black;
@@ -386,6 +375,7 @@ body.admin-bar #site-navigation {
 #site-navigation.stuck {
 	background: rgba(51, 51, 51, .9);
 	top: 0;
+	transition: all .5s ease;
 }
 .sticky-topbar:not(.no-topbar) #site-navigation.stuck {
 	top: 31px;
@@ -404,17 +394,17 @@ body.admin-bar #site-navigation {
 	height: 2.8rem;
 	line-height: 2.8rem;
 	text-decoration: none;
-	padding: .7rem 2.4rem;
+	padding: .7rem 2.1rem;
 }
 #site-navigation .menu > li.none:first-child ~ li:nth-child(2) a,
 #site-navigation .menu > li:not(.none):first-child a {
 	border-left: none;
+	padding-left: 0;
 }
 .boxed #site-navigation .menu > li.none:first-child ~ li:nth-child(2) a,
 .boxed #site-navigation .menu > li:not(.none):first-child a,
 .menu-wide #site-navigation .menu > li.none:first-child ~ li:nth-child(2) a,
 .menu-wide #site-navigation .menu > li:not(.none):first-child a {
-	padding-left: 0;
 }
 #site-navigation .menu > li:last-child a {
 	border-right: none;
@@ -703,34 +693,59 @@ header .search-submit,
 }
 
 /* Widths */ 
-#masthead-top.stuck,
+#footer,
 #masthead,
-#footer {
+.menu-wide #masthead-top,
+.menu-wide #site-navigation,
+.menu-wide .sticky-wrapper,
+#page {
 	width: 100%
 }
-.no-responsive #page,
-.boxed #page,
 .boxed #masthead-top,
-.boxed #masthead-top.stuck{
-	width: 980px;
-}
+.boxed #masthead-top.stuck,
+.boxed #page,
+.boxed #site-navigation,
+.menu-wide #site-navigation .menu,
+.boxed .sticky-wrapper,
+#footer-inner,
 #main,
 #masthead-inner,
-#masthead-top-inner,
+#masthead-top,
+.menu-wide #masthead-top-inner,
 .sidebar-none #content,
-#footer-inner {
+#site-navigation,
+.sticky-wrapper {
 	width: 960px;
 }
 #content {
 	width: calc(960px - 250px - 2.8rem);
 }
 .boxed #content {
-	width: calc(980px - 4.2rem - 250px);
+	width: calc(960px - 5.6rem - 250px);
+}
+.boxed #site-navigation .menu,
+.boxed #masthead-inner,
+.boxed #footer-inner,
+#masthead-top-inner,
+#site-navigation .menu,
+.boxed.menu-wide #masthead-top-inner {
+	width: calc(960px - 2.8rem);
 }
 
+.no-responsive.menu-wide:not(.boxed) #masthead-top,
+.no-responsive:not(.boxed) #page {
+	min-width: 1000px;
+}
+body.no-responsive.boxed{
+	min-width: 1000px;
+}
+:not(.boxed).menu-wide #site-navigation .menu {
+	max-width: calc(100% - 4.2rem);
+}
 /* Page: #page */
-#page{
+#page {
 	background: white;
+	margin: auto;
 }
 
 .boxed #page {
@@ -763,11 +778,20 @@ header .search-submit,
 	background: #333;
 	border-bottom: 3px solid #88A836;
 	height: 28px;
-}
-#masthead-top-inner {
 	margin: auto;
 }
+#masthead-top-inner {
+	margin-left: 1.4rem;
+	margin-right: 1.4rem;
+}
+.menu-wide #masthead-top-inner {
+	margin-left: auto;
+	margin-right: auto;
+}
 #masthead-top.stuck{
+	box-shadow: 
+		0 .7rem .35rem -.35rem rgba(00%, 00%, 00%, .5),
+		0 .2rem .1rem -.1rem black;
 	z-index: 99;
 	top: 0;
 }
@@ -821,7 +845,7 @@ header .search-submit,
 	overflow: hidden;
 	position: relative;
 	transition: all .2s ease;
-	z-index: 101;
+	z-index: 9999;
 }
 #cart.has-items.expanded,
 #cart.has-items:hover {
@@ -904,12 +928,21 @@ body.has-slider #main {
 #content {
 	float: right;
 }
+.boxed #content {
+	margin-left: 0;
+	margin-right: 1.4rem;
+}
+.boxed.sidebar-after #content {
+	margin-right: 0;
+	margin-left: 1.4rem;
+}
 .sidebar-none #content {
 	float: right;
 }
 .sidebar-after #content {
 	float: left;
 }
+
 /* Sidebar */
 #sidebar {
 	background: #303030;
@@ -919,11 +952,20 @@ body.has-slider #main {
 	z-index: 500;
 	padding-top: 10px;
 }
-.sidebar-none #sidebar {
-	display: none;
-}
+.boxed.sidebar-after #sidebar,
 .sidebar-after #sidebar {
 	float: right;
+}
+.boxed #sidebar {
+	margin-left: 1.4rem;
+	margin-right: 0;
+}
+.boxed.sidebar-after #sidebar {
+	margin-left: 0;
+	margin-right: 1.4rem;
+}
+.sidebar-none #sidebar {
+	display: none;
 }
 #sidebar a {
 	color: white;
@@ -1015,10 +1057,4 @@ body.has-slider #sidebar {
 	margin-right: 1em;
 	margin-left: 1em;
 	color: #777;
-}
-
-/* NProgress */
-#nprogress .bar {
-  background: #88A836;
-  height: .7rem;
 }

@@ -19,7 +19,7 @@ piklist('field', array(
 piklist('field', array(
 	'type' => 'file'
 	,'field' => 'favicon'
-	,'help' => __('The rRecommanded size is 60x60', 'tijara')
+	,'help' => __('The recommanded size is 60x60', 'tijara')
 	,'label' => __('Shortcut Icon (favicon)', 'tijara')
 	,'options' => array(
 		'button' => __('Upload or choose a favicon', 'tijara')
@@ -76,7 +76,7 @@ piklist('field', array(
 piklist('field', array(
 	'type' => 'radio'
 	,'field' => 'topbar_plus'
-	,'label' => __('Top additionnal components', 'tijara')
+	,'label' => __('Top bar additionnal components', 'tijara')
 	,'choices' => array(
 		'cart' => __('Cart', 'tijara')
 		,'social' => __('Social icons', 'tijara')

@@ -1,14 +1,7 @@
-@import url(http://fonts.googleapis.com/css?family=Ubuntu:400,700,700italic,400italic|Michroma|Faster+One);
 body,
 button,
 input,
 select,
 textarea {
-	font-family: 'Ubuntu', serif;
-}
-.font-faster-one{
-	font-family: 'Faster One', cursive;
-}
-.font-michroma{
-	font-family: 'Michroma', sans-serif;
+	font-family: 'Ubuntu;
 }

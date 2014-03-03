@@ -12,9 +12,7 @@
 
 	<footer id="footer" class="site-footer" role="contentinfo">
 		<div id="footer-inner">
-			<div id="footer-fourths">
-				<?php dynamic_sidebar( 'footer' );?>
-			</div><!-- footer-fourths -->
+			<?php dynamic_sidebar( 'footer' );?>
 			<div class="site-info">
 				<?php do_action( 'tijara_credits' ); ?>
 				<?php printf( __( 'Copyright &copy; %d %s. All rights reserved', 'tijara' ), strftime('%Y', time()), get_bloginfo('name') ); ?>

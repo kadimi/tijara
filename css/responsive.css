@@ -28,12 +28,18 @@
 	.boxed #masthead-top,
 	.boxed #masthead-top.stuck,
 	.boxed #page,
-	#footer-inner,
+	#footer,
 	#main,
 	#site-navigation,
 	.sticky-wrapper {
 		width: 100%;
 	}
+	.boxed #footer-inner,
+	.boxed #masthead-inner,
+	.boxed #masthead-top-inner,
+	#footer-inner,
+	.menu-wide #masthead-inner,
+	.menu-wide #masthead-top-inner,
 	#masthead-inner,
 	#masthead-top-inner {
 		margin-left: auto;
@@ -42,18 +48,18 @@
 	}
 	#container,
 	#primary {
-		margin-left: calc(-250px);
-		margin-right: 1.4rem;
+		margin-left: -250px;
+		margin-right: 2.4rem;
 		width: calc(100% - 5.6rem);
 	}
 	.sidebar-none #container,
 	.sidebar-none #primary {
 		width: calc(100% - 2.8rem);
 	}
-	.sidebar-after #container,
+	.sidebar-after #cozntainer,
 	.sidebar-after #primary {
-		margin-left: 1.4rem;
-		margin-right: calc(-250px);
+		margin-left: 0;
+		margin-right: calc(1.4rem -250px);
 	}
 	#masthead {
 		margin-bottom: 0;
@@ -67,20 +73,25 @@
 		margin-bottom: 1.4rem;
 		margin-top: 1.4rem;
 	}
-	#content {
-		width: 100%;
-	}
+	.boxed #content,
+	.boxed.sidebar-none #content,
+	#content,
 	.sidebar-none #content {
 		width: 100%;
 	}
 	#site-navigation .menu {
 		display: none;	
 	}
-	#site-navigation {
-		background: #111;
+	#site-navigation,
+	#site-navigation.stuck,
+	#site-navigation.stuck:hover {
+		background: rgb(51, 51, 51);
 		height: 3.5rem;
 		padding: 1.4rem 0;
 		text-align: center;
+
+		height: auto;
+		background: rgb(51, 51, 51);
 	}
 	#s,
 	.tinynav { 
@@ -102,7 +113,7 @@
 		left: -5px;
 		content: "\f007";
 	}
-
+	.boxed #sidebar, 
 	#sidebar {
 		margin-left: calc(-250px + 2.8rem);
 		position: relative;
@@ -115,13 +126,17 @@
 		background-image: none;
 		margin-left: 0;
 	}
+	.boxed.sidebar-after #sidebar,
 	.sidebar-after #sidebar {
 		margin-left: auto;
 		margin-right: calc(-250px + 2.8rem);
 		background-position: top .7rem left .7rem ;
 	}
+	.boxed.sidebar-after #sidebar.expanded,
 	.sidebar-after #sidebar.expanded {
 		margin-right: 0;
+		position: absolute;
+		right: 0; /* Todo: remove hack, and use same thing as the sidebar-before */
 	}
 	#sidebar:hover {
 		background-position: top 1.4rem right .7rem ;
@@ -165,39 +180,50 @@
 
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) {
+
 	.boxed #page,
 	#page{
 		width: auto;
-		margin: 0;
 	}
-	.boxed #site-navigation,
-	.boxed .sticky-wrapper,
 	.boxed #masthead-top,
 	.boxed #masthead-top.stuck,
 	.boxed #page,
-	#footer-inner,
+	.boxed #site-navigation,
+	.boxed .sticky-wrapper,
+	#footer,
 	#main,
 	#site-navigation,
-	.sticky-wrapper 
-	#footer-inner,
-	#main,
-	#site-navigation,
-	.sticky-wrapper{
+	.sticky-wrapper {
 		width: 100%;
 	}
-	#masthead-inner,
-	#masthead-top-inner {
-		margin-left: auto;
-		margin-right: auto;
-		width: calc(100% - 2.8rem);
-	}
-	#site-navigation > .menu{
-		width: calc(100% - 2.8rem);
+	.boxed #page,
+	#page {
+		margin: 0;
 	}
 	#container,
 	#primary {
 		width: calc(100% - 250px);
 	}
+	.boxed #content,
+	.boxed #footer-inner,
+	.boxed #site-navigation > .menu,
+	#content,
+	#footer-inner,
+	#site-navigation > .menu {
+		width: calc(100% - 2.8rem);
+	}
+	.boxed #masthead-inner,
+	.boxed #masthead-top-inner,
+	.menu-wide #masthead-top-inner,
+	#masthead-top-inner
+	#masthead-inner,
+	.menu-wide #masthead-inner,
+	#masthead-top-inner {
+		margin-left: auto;
+		margin-right: auto;
+		width: calc(100% - 2.8rem);
+	}
+
 	#site-navigation li a {
 		padding-left: 1.4rem;
 		padding-right: 1.4rem;
@@ -211,11 +237,13 @@
 	.sidebar-none #primary {
 		width: calc(100% - 2.8rem);
 	}
+	.boxed #sidebar,
+	.boxed.sidebar-after #sidebar,
 	#sidebar {
 		width: 250px;
+		margin: 0;
 	}
 	#content {
-		width: calc(100% - 2.8rem);
 		margin-right: 1.4rem;
 		margin-left: 1.4rem;
 	}
@@ -226,45 +254,44 @@
 
 /* Large desktop */
 @media (min-width: 1200px) {
-	.boxed #page,
-	.boxed #masthead-top{
-		width: 1180px;
+
+	/* Widths */ 
+	#footer,
+	#masthead,
+	.menu-wide #masthead-top,
+	.menu-wide #site-navigation,
+	.menu-wide .sticky-wrapper,
+	#page {
+		width: 100%
 	}
 	.boxed #masthead-top,
 	.boxed #masthead-top.stuck,
+	.boxed #page,
 	.boxed #site-navigation,
 	.boxed .sticky-wrapper,
-	.boxed #page,
+	#footer-inner,
 	#main,
 	#masthead-inner,
-	#masthead-top-inner,
+	#masthead-top,
+	.menu-wide #masthead-top-inner,
+	.sidebar-none #content,
 	#site-navigation,
 	#site-navigation .menu,
-	.sticky-wrapper,
-	#footer-inner {
-		width: 1180px;
-	}
-	.boxed #site-navigation,
-	.boxed .sticky-wrapper { 
-		width: 1180px;
-	}
-	.boxed #masthead-inner,
-	.boxed #masthead-top-inner,
-	.boxed #site-navigation .menu{
-		width: calc(1180px - 5.6rem);
-	}
-	#sidebar {
-		width: 250px;
+	.sticky-wrapper {
+		width: 1140px;
 	}
 	#content {
-		width: calc(1180px - 2.8rem - 250px);
+		width: calc(1140px - 250px - 2.8rem);
 	}
-	.xboxed #content {
-		margin-right: 2.8rem;
-		width: calc(1180px - 5.6rem - 250px);
+	.boxed #content {
+		width: calc(1140px - 5.6rem - 250px);
 	}
-	.sidebar-none #content {
-		width: 1180px;
+	.boxed #site-navigation .menu,
+	.boxed #masthead-inner,
+	.boxed #footer-inner,
+	#masthead-top-inner,
+	.boxed.menu-wide #masthead-top-inner {
+		width: calc(1140px - 2.8rem);
 	}
 }
 
@@ -274,6 +301,7 @@
 		display: none;
 	}
 }
+
 /* Desktop only stuff */
 @media (max-width: 767px) {
 	.desktop-only {

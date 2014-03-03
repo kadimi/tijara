@@ -76,41 +76,6 @@ function tijara_inline_css() {
 }
 
 /**
- * Enqueue script for NProgress, must be first
- */
-add_filter( 'wp_enqueue_scripts', 'tijara_nprogress_enqueue', 0 );
-
-function tijara_nprogress_enqueue() {
-	wp_enqueue_style( 'nprogress', get_template_directory_uri() . '/vendor/nprogress/nprogress.css' );
-	wp_enqueue_script( 'nprogress', get_template_directory_uri() . '/vendor/nprogress/nprogress.js' );
-}
-
-/**
- * NProgress, inline
- */
-add_action( 'wp_footer', 'tijara_nprogress_inline_enqueue' );
-function tijara_nprogress_inline_enqueue() {
-  if ( wp_script_is( 'jquery', 'done' ) ) {
-	?><script>
-		// Todo: Minify 
-		NProgress.configure({showSpinner: false});
-		NProgress.start();
-		var interval = setInterval(function() { NProgress.inc(); }, 200);
-		jQuery(window).load(function(){
-			clearInterval(interval);
-			NProgress.done();
-		});
-		jQuery(window).unload(function(){
-
-			// Do not show on unload on Chrome or Chromium, flickering bug
-			if ( !/chrom(e|ium)/.test(navigator.userAgent.toLowerCase()) ) {
-				NProgress.start();
-			}
-		});
-	</script><?php }
-}
-
-/**
  * Enqueue admin script and style
  */
 add_action( 'admin_init', 'tijara_enqueue_admin' );
