@@ -318,9 +318,6 @@ function tijara_body_class($classes) {
 	}
 
 	// Sticky
-	if ( !tijara_option('sticky') ) {
-		$classes[] = 'sticky-menu';
-	}
 	if ( tijara_option('sticky') && in_array('menu', tijara_option('sticky')) ) { 
 		$classes[] = 'sticky-menu';
 	}

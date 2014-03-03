@@ -371,6 +371,7 @@ body.admin-bar #site-navigation {
 	box-shadow: 
 		0 .7rem .35rem -.35rem rgba(00%, 00%, 00%, .5),
 		0 .2rem .1rem -.1rem black;
+	top: 31px;
 }
 #site-navigation.stuck {
 	background: rgba(51, 51, 51, .9);
@@ -438,7 +439,7 @@ body.admin-bar #site-navigation {
 	position: absolute;
 	text-transform: none;
 	width: auto;
-	z-index: 99;
+	z-index: 30;
 }
 #site-navigation .menu ul a {
 	color: #333;
@@ -466,7 +467,7 @@ body.admin-bar #site-navigation {
 
 .sticky-wrapper .stuck {
 	position: fixed;
-	z-index: 99;
+	z-index: 19;
 }
 
 /* =Content
@@ -779,6 +780,7 @@ body.no-responsive.boxed{
 	border-bottom: 3px solid #88A836;
 	height: 28px;
 	margin: auto;
+	top: 0;
 }
 #masthead-top-inner {
 	margin-left: 1.4rem;
@@ -829,14 +831,6 @@ body.no-responsive.boxed{
 #logo {
 	margin-bottom: 1.4rem;
 }
-#social-wrapper {
-	font-size: 1.75rem;
-}
-#social-wrapper .fa {
-	color: white;
-	padding-left: 1em;
-	text-decoration: none;
-}
 #cart-wrapper {
 	overflow: visible;
 	text-align: start;
@@ -850,7 +844,11 @@ body.no-responsive.boxed{
 #cart.has-items.expanded,
 #cart.has-items:hover {
 	border-top:solid .7rem transparent;
-	box-shadow: 0 .7rem 1.4rem rgba(100%, 100%, 100%, .25);
+	Xbox-shadow: 0 .7rem 1.4rem rgba(100%, 100%, 100%, .25);
+	box-shadow: 
+		0 0 .35rem .35rem rgba(00%, 00%, 00%, .5),
+		0 0 .1rem .1rem rgba(100%, 100%, 100%, .5);
+
 	margin-bottom: -8.4rem;
 }
 #cart-icon {
@@ -949,7 +947,7 @@ body.has-slider #main {
 	border-top: .3rem solid #88A836;
 	float: left;
 	width: 250px;
-	z-index: 500;
+	z-index: 20;
 	padding-top: 10px;
 }
 .boxed.sidebar-after #sidebar,
@@ -1057,4 +1055,33 @@ body.has-slider #sidebar {
 	margin-right: 1em;
 	margin-left: 1em;
 	color: #777;
+}
+
+/* Social icons */
+#social-wrapper {
+	font-size: 1.75rem;
+}
+#social-wrapper .fa {
+	color: white;
+	text-decoration: none;
+}
+#social-wrapper .fa{
+	background: transparent;
+	display: inline-block;
+	height: 20px;
+	line-height: 24px;
+	margin-left: -4px;
+	margin-right: -4px;
+	padding: 4px;
+	transition: all .2s ease;
+	width: 28px;
+}
+#social-wrapper .fa-facebook:hover{
+	background: #3B5998;
+}
+#social-wrapper .fa-twitter:hover{
+	background: #4099FF;
+}
+#social-wrapper .fa-google-plus:hover{
+	background: #dd4B39;
 }

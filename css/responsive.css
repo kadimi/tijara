@@ -115,28 +115,29 @@
 	}
 	.boxed #sidebar, 
 	#sidebar {
-		margin-left: calc(-250px + 2.8rem);
-		position: relative;
 		background-image: url("http://findicons.com/files/icons/1689/splashy/16/arrow_state_grey_expanded.png");
 		background-position: top .7rem right .7rem ;
 		background-repeat: no-repeat;
+		left: calc(-250px + 2.8rem);
+		margin-left: 0;
+		position: absolute;
 		transition: all .2s ease;
+		z-index: 50;
 	}
 	#sidebar.expanded {
 		background-image: none;
-		margin-left: 0;
+		left: 0;
 	}
 	.boxed.sidebar-after #sidebar,
 	.sidebar-after #sidebar {
-		margin-left: auto;
-		margin-right: calc(-250px + 2.8rem);
 		background-position: top .7rem left .7rem ;
+		left: auto;
+		margin-right: 0;
+		right: calc(-250px + 2.8rem);
 	}
 	.boxed.sidebar-after #sidebar.expanded,
 	.sidebar-after #sidebar.expanded {
-		margin-right: 0;
-		position: absolute;
-		right: 0; /* Todo: remove hack, and use same thing as the sidebar-before */
+		right: 0;
 	}
 	#sidebar:hover {
 		background-position: top 1.4rem right .7rem ;
