@@ -11,7 +11,14 @@
  * @package tijara
  */
 
-get_header(); ?>
+// Prevent direct access to the file
+if( !function_exists('get_header') ) {
+	exit('This file is not intended to be accessed directly&hellip;Exiting');
+}
+
+get_header(); 
+
+?>
 
 	<div id="primary" class="content-area">
 		<div id="content" class="site-content" role="main">
