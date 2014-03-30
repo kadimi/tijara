@@ -8,11 +8,19 @@ function tijara_enqueue() {
 	// wp_enqueue_style( 'tijara-style', get_stylesheet_uri() );
 
 	// The main stylesheet
-	wp_enqueue_style( 'tijara-main', get_template_directory_uri() . '/css/main.css' );
+	if( tijara_option('disable_scss') ) {
+		wp_enqueue_style( 'tijara-main', get_template_directory_uri() . '/css/main.css' );
+	} else {
+		wp_enqueue_style( 'tijara-main', get_template_directory_uri() . '/style.php/main.scss' );
+	}
 
 	// The responsive stylesheet
 	if( !tijara_option('disable_responsive') ) {
-		wp_enqueue_style( 'tijara-responsive', get_template_directory_uri() . '/css/responsive.css' );
+		if( tijara_option('disable_scss') ) {
+			wp_enqueue_style( 'tijara-responsive', get_template_directory_uri() . '/css/responsive.css' );
+		} else {
+			wp_enqueue_style( 'tijara-responsive', get_template_directory_uri() . '/style.php/responsive.scss' );
+		}
 	}
 
 	// Font Awesome

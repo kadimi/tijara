@@ -86,19 +86,6 @@ piklist('field', array(
 	,'list' => false
 ));
 
-// Main menu width
-piklist('field', array(
-	'type' => 'radio'
-	,'field' => 'menu_width'
-	,'label' => __('Main menu width', 'tijara')
-	,'choices' => array(
-		'normal' => __('Normal', 'tijara')
-		,'wide' => __('Wide (fit page)', 'tijara')
-	)
-	,'list' => false
-	,'value' => 'normal'
-));
-
 // Sticky
 piklist('field', array(
 	'type' => 'checkbox'
@@ -138,6 +125,26 @@ piklist('field', array(
 	)
 	,'list' => false
 	,'value' => '0'
+));
+
+// Main menu width
+piklist('field', array(
+	'type' => 'radio'
+	,'field' => 'menu_width'
+	,'label' => __('Main menu width', 'tijara')
+	,'choices' => array(
+		'normal' => __('Normal', 'tijara')
+		,'wide' => __('Wide (fit page)', 'tijara')
+	)
+	/*
+	,'conditions' => array(
+		array(
+			'field' => 'boxed'
+			,'value' => '0')
+	)
+	*/
+	,'list' => false
+	,'value' => 'normal'
 ));
 
 // Boxed > background
@@ -204,4 +211,18 @@ piklist('field', array(
 		,'placeholder' => 'eg. https://www.facebook.com/tijara'
 	),
 	'list' => false
+));
+
+// Boxed 
+piklist('field', array(
+	'type' => 'radio'
+	,'field' => 'disable_scss'
+	,'label' => __('Disable SCSS')
+	,'help' => __("SCSS is better but complicated, you should't care about this option unless you are doing major edits in the theme core, which is not advised.")
+	,'choices' => array(
+		'1' => __('Yes', 'tijara')
+		,'0' => __('No', 'tijara')
+	)
+	,'list' => false
+	,'value' => '0'
 ));

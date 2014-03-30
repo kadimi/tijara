@@ -1,0 +1,74 @@
+.block {
+	display: block;
+}
+.inline {
+	display: inline;
+}
+.none {
+	display: none;
+}
+.invisible {
+	visibility: hidden;
+}
+.white {
+	color: white;
+	transition: all .2s ease;
+}
+.black {
+	color: black;
+}
+.gray {
+	color: gray;
+	transition: all .2s ease;
+}
+.strong, .bold {font-weight: bold}
+.italic, .em {font-style: italic}
+.double {font-size: 2.8rem}
+.big {font-size: 2.1rem}
+.small {font-size: 1.05rem}
+
+.one-full,
+.one-half,
+.one-third,
+.one-fourth,
+.span1, .span2, .span3,
+.span4, .span5, .span6,
+.span7, .span8, .span9,
+.span10, .span11, .span12 {
+	display: block;
+	float: left;
+	margin-right: 2%;
+	min-height: 1px;
+	overflow-x: hidden;
+}
+.one-full,
+.one-half.last,
+.one-third.last,
+.one-fourth.last,
+.span1.last, .span2.last, .span3.last,
+.span4.last, .span5.last, .span6.last,
+.span7.last, .span8.last, .span9.last,
+.span10.last, .span11.last, .span12.last {
+	margin-right: 0 !important;
+}
+.one-full {width: 100%}
+.one-half {width: 49%}
+.one-third {width: 32%}
+.one-fourth {width: 23.5%}
+
+.span1 {width: 6.5%}
+.span2 {width: 15%}
+.span3 {width: 23.5%}
+.span4 {width: 32%}
+.span5 {width: 40.5%}
+.span6 {width: 49%}
+.span7 {width: 57.5%}
+.span8 {width: 66%}
+.span9 {width: 74.5%}
+.span10 {width: 83%}
+.span11 {width: 91.5%}
+.span12 {width: 100%}
+
+.screen-reader-text {
+	display: none;
+}
