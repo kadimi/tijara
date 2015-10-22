@@ -5,8 +5,8 @@
 add_action( 'widgets_init', 'tijara_widgets_init' );
 function tijara_widgets_init() {
 	register_sidebar( array(
-		'name'			=> __( 'Header Center', 'tijara' ),
-		'id'			=> 'header-center',
+		'name'			=> __( 'Header', 'tijara' ),
+		'id'			=> 'header',
 		'before_widget' => '<div class="">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<span class="none">',
@@ -14,7 +14,7 @@ function tijara_widgets_init() {
 	) );
 	register_sidebar( array(
 		'name'			=> __( 'Sidebar', 'tijara' ),
-		'id'			=> 'sidebar-1',
+		'id'			=> 'sidebar',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'before_title'  => '<h5 class="widget-title">',
 		'after_title'   => '</h5><div class="widget-contents">',
@@ -33,7 +33,7 @@ function tijara_widgets_init() {
 function force_widget_title($title) {
     return !$title ? '<span class="generated">&nbsp;</span>' : $title;
 }
-add_filter('widget_title', force_widget_title);
+add_filter('widget_title', 'force_widget_title');
 
 // if no title then add widget content wrapper to before widget
 //add_filter( 'dynamic_sidebar_params', 'check_sidebar_params' );
@@ -279,19 +279,21 @@ function tijara_dynamic_sidebar_params_2($params) {
 add_filter( 'sidebars_widgets', 'tijara_sidebars_widgets', 10);
 function tijara_sidebars_widgets ($sidebars_widgets){
 	foreach ($sidebars_widgets as $sidebar => $widgets) {
-		foreach ($widgets as $widget_index => $widget_id) {
-			if($sidebar == 'wp_inactive_widgets'){
-				continue;
-			}
-			// Get the widget id_base and number
-			$widget_id = $widget_id;
-			preg_match('/(.+)-(\d+)/', $widget_id, $widget_id_parts);
-			list(, $widget_id_base, $widget_number) = $widget_id_parts;
-			$widget_family_options = get_option('widget_' . $widget_id_base);
-			$widget_options = $widget_family_options[$widget_number];
-			// Remove the widget
-			if($widget_options['hide_in_home']){
-				unset($sidebars_widgets[$sidebar][$widget_index]);
+		if ( is_array( $widgets ) ) {
+			foreach ($widgets as $widget_index => $widget_id) {
+				if($sidebar == 'wp_inactive_widgets'){
+					continue;
+				}
+				// Get the widget id_base and number
+				$widget_id = $widget_id;
+				preg_match('/(.+)-(\d+)/', $widget_id, $widget_id_parts);
+				list(, $widget_id_base, $widget_number) = $widget_id_parts;
+				$widget_family_options = get_option('widget_' . $widget_id_base);
+				$widget_options = $widget_family_options[$widget_number];
+				// Remove the widget
+				if ( array_key_exists( 'hide_in_home', $widget_options ) && $widget_options[ 'hide_in_home' ] ) {
+					unset( $sidebars_widgets[$sidebar][$widget_index] );
+				}
 			}
 		}
 	}
@@ -318,10 +320,10 @@ function tijara_body_class($classes) {
 	}
 
 	// Sticky
-	if ( tijara_option('sticky') && in_array('menu', tijara_option('sticky')) ) { 
+	if ( 'menu' === tijara_option( 'sticky') OR in_array('menu', tijara_option( 'sticky', array() ) ) ) { 
 		$classes[] = 'sticky-menu';
 	}
-	if ( tijara_option('sticky') && in_array('topbar', tijara_option('sticky')) ) { 
+	if ( 'topbar' === tijara_option( 'sticky') OR in_array('topbar', tijara_option( 'sticky', array() ) ) ) { 
 		$classes[] = 'sticky-topbar';
 	}
 
@@ -347,7 +349,7 @@ function tijara_body_class($classes) {
 	$classes[] = 'sidebar-' . tijara_option('sidebar_position');
 
 	// Sidebar position
-	if(empty($sidebars_widgets['sidebar-1'])){
+	if(empty($sidebars_widgets['sidebar'])){
 		$classes = array_values(array_diff($classes,array('sidebar-before')));
 		$classes = array_values(array_diff($classes,array('sidebar-after')));
 		$classes[] = 'sidebar-none';

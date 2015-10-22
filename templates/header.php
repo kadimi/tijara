@@ -33,7 +33,7 @@
 			}
 		?>
 		<div class="<?php echo $header_sidebar_spans; ?>">
-			<?php dynamic_sidebar( 'header-center' );?>
+			<?php dynamic_sidebar( 'header' );?>
 		</div>
 
 

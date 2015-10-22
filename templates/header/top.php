@@ -7,7 +7,7 @@
 
 <?php
 	
-	$topbar_plus = tijara_option('topbar_plus');
+	$topbar_plus = tijara_option( 'topbar_plus', tijara_default( 'topbar_plus' ) );
 
 	$secondary_menu = wp_nav_menu(
 		array(
@@ -70,7 +70,6 @@
 						break;
 				}
 				echo '</div>';
-				
 			}
 
 		?>

@@ -20,20 +20,34 @@ function tijara_settings_pages($pages){
 }
 
 // Define a getter for options
-function tijara_option($option) {
+function tijara_option($option, $default = null) {
 
 	// Todo: try with static $theme_options for less DB requests
 
-	$theme_options = get_option('tijara');
+	$theme_options = get_option( 'tijara', array() );
 
-	// var_dump($theme_options); die();
+	return array_key_exists( $option, $theme_options )
+		? $theme_options[$option]
+		: $default
+	;
+}
 
-	return isset($theme_options[$option]) ? $theme_options[$option] : false;
+// Define defaults
+function tijara_default( $option ) {
+	$defaults = array(
+		'topbar_plus' => 'social|cart',
+	);
+
+	return array_key_exists( $option, $defaults )
+		? $defaults[$option]
+		: null
+	;
 }
 
 // Getter for first image
 function tijara_get_image_URL ($image, $default = null) {
 	$image = tijara_option($image);
+	$image_URL = false;
 	is_array($image) && $image = $image[0];
 	if ( !empty( $image ) ) {
 		$image_URL = wp_get_attachment_url( $image );	
@@ -54,7 +68,7 @@ function tijara_get_logo_URL ($default = 'logo.png') {
 
 // Logo URL getter
 function tijara_get_background_URL () {
-	return tijara_get_image_URL ('background', $default);
+	return tijara_get_image_URL ('background', '');
 }
 
 // Favicon URL getter
@@ -73,4 +87,15 @@ function tijara_repair_options( $new_value, $old_value ) {
 	$new_value['social_links'] = array_filter($new_value['social_links']);
 
 	return $new_value;
+}
+
+// Remove Piklist menus
+add_filter( 'piklist_admin_pages', 'tijara_remove_piklist_menu' );
+function tijara_remove_piklist_menu( $pages ) {
+	foreach ( $pages as $page => $value ) {
+		if ( 'piklist' === $value['menu_slug'] ) {
+			unset( $pages[ $page ] );
+		}
+	}
+	return $pages;  
 }

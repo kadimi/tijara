@@ -33,4 +33,4 @@ global $woocommerce;
 
 	?>
 
-	<div id="main" class="site-main <?php echo is_active_sidebar('sidebar-1') ? 'with-sidebar' : '' ?>">
+	<div id="main" class="site-main <?php echo is_active_sidebar('sidebar') ? 'with-sidebar' : '' ?>">

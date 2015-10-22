@@ -45,7 +45,7 @@ if($primary_menu){
 
 		<?php if ( !tijara_option('disable_responsive') ) { ?>
 		<div id="mobile-cart">
-			<a href="#"><i class="fa fa-shopping-cart double"></i></a>	
+			<a href="<?php echo $GLOBALS['woocommerce']->cart->get_cart_url(); ?>"><i class="fa fa-shopping-cart double"></i></a>	
 		</div>
 		<?php } ?>
 

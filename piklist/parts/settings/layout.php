@@ -76,6 +76,7 @@ piklist('field', array(
 piklist('field', array(
 	'type' => 'radio'
 	,'field' => 'topbar_plus'
+	, 'value' => tijara_default( 'topbar_plus' )
 	,'label' => __('Top bar additionnal components', 'tijara')
 	,'choices' => array(
 		'cart' => __('Cart', 'tijara')
@@ -104,7 +105,6 @@ piklist('field', array(
 	'type' => 'radio'
 	,'field' => 'disable_responsive'
 	,'label' => __('Disable responsive layout', 'tijara')
-	// ,'description' => __('')
 	,'choices' => array(
 		'1' => __('Yes', 'tijara')
 		,'0' => __('No', 'tijara')
@@ -118,7 +118,6 @@ piklist('field', array(
 	'type' => 'radio'
 	,'field' => 'boxed'
 	,'label' => __('Use boxed layout', 'tijara')
-	// ,'description' => __('')
 	,'choices' => array(
 		'1' => __('Yes', 'tijara')
 		,'0' => __('No', 'tijara')
@@ -189,7 +188,6 @@ piklist('field', array(
 	'type' => 'radio'
 	,'field' => 'sidebar_position'
 	,'label' => __('Sidebar position', 'tijara')
-	// ,'description' => __('')
 	,'choices' => array(
 		'before' => __('Before main content', 'tijara')
 		,'after' => __('After main content', 'tijara')
